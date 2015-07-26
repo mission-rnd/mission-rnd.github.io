@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta name="GENERATOR" content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
+<title>nodejs-rest5</title>
+</head>
+<body bgcolor="#ffffff">
+<p align="center" pbzloc="14">NodeJS RESTful Services.</p>
+
+<h1>Overview</h1>
+
+<p>You will learn how to develop RESTful services using node.js and MySQL.</p>
+
+<h1>PreRequisites</h1>
+
+<p>nodejs 101 (File Persistence) and nodejs 102 (MySQL Db Persistence).</p>
+
+<h1>Http Concepts</h1>
+
+<p>Http stands for HyperText Transfer Protocol.</p>
+
+<p>Hypertext is generally defined as any block of content or text that includes hyperlinks to other documents, images, or multimedia content as shown in the example below:</p>
+
+<p>&lt;p&gt;This html para is an example of hypertext. It is generally defined as any block of content or text that includes &lt;a href=&rsquo;wikipedia.com/hyperlinks&quot;&gt;hyperlinks&lt;/a&gt; to other &lt;a href=&quot;wikipedia.com/documents&quot;&gt;documents&lt;/a&gt;, images, or multimedia content.&lt;/p&gt;</p>
+
+<p>HTTP is a protocol for sending and receiving hypertext.</p>
+
+<p>It was Invented by Tim Berners Lee in 1989. First version of HTTP had only GET method that would request a html page from server.</p>
+
+<h2>Principles of Http Services</h2>
+
+<ul>
+	<li>Request/Response based - Client sends a Http request and gets back a response from the Server</li>
+	<li>Both request/response have headers that indicate additional info about request/response.</li>
+	<li>Any type of data can be sent over Http (html pages, images, blobs etc).</li>
+</ul>
+
+<h2>Http Methods/Operations</h2>
+
+<ul>
+	<li>CONNECT - Connects to the server</li>
+	<li>GET - GET method is used to retrieve info from server for the given URL</li>
+	<li>POST - A POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms. This is equivalent to CREATE operation.</li>
+	<li>PUT -&nbsp; Replaces all current representations of the target resource with the uploaded content. This is equivalent to UPDATE operation.</li>
+	<li>DELETE - Removes all current representations of the target resource given by a URI.</li>
+</ul>
+
+<h2>Sample Http Request</h2>
+
+<p pbzloc="18"><img border="0" hspace="0" src="images/image00.png" /></p>
+
+<h2>Sample Http Response</h2>
+
+<p pbzloc="22"><img border="0" hspace="0" src="images/image01.png" /></p>
+
+<p>&nbsp;</p>
+
+<h2>Http Content Types</h2>
+
+<ul>
+	<li>Content can be of any type (text, html, xml, json, image, binary etc)</li>
+	<li>Content-Type header indicates the type of content.</li>
+	<li>Common Types
+	<ul>
+		<li>Application/xml - XML documents</li>
+		<li>Application/json - JSON document</li>
+		<li>Image - For images.</li>
+	</ul>
+	</li>
+</ul>
+
+<h2>Http Status Codes</h2>
+
+<ul>
+	<li>Http Status codes
+	<ul>
+		<li>See <a href="http://www.tutorialspoint.com/http/http_responses.htm">http://</a><a href="http://www.tutorialspoint.com/http/http_responses.htm">www.tutorialspoint.com/http/http_responses.htm</a></li>
+	</ul>
+	</li>
+	<li>&nbsp;Common Status Codes
+	<ul>
+		<li>200 - Success</li>
+		<li>4xx - Incorrect request from client.
+		<ul>
+			<li>Eg: 404 is resouce not found</li>
+			<li>400 is a badly formed request sent by client</li>
+		</ul>
+		</li>
+		<li>5xx - Server error - Eg: 500 is internal server error.</li>
+	</ul>
+	</li>
+</ul>
+
+<h2>RESTful Services</h2>
+
+<ul>
+	<li>A way of implementing web services using standard http operations</li>
+	<li>Web services provide opertions to handle resources - Resources can be books (eg: flipkart.com), people (eg: facebook), messages (eg: twitter)</li>
+	<li>Http request URI identifies the resource to perform the operation on</li>
+	<li>REST services can be implemented in any server technology (python, asp.net, java, nodejs)</li>
+	<li>REST services can be called by any client written in any language (java, .net, javascript)</li>
+</ul>
+
+<h2>Tools to View Http Requests</h2>
+
+<ol>
+	<li>fiddler, postman, curl
+	<ul>
+		<li>Fiddler video: <a href="https://www.youtube.com/watch?v=gujBKFGwjd4">https://www.youtube.com/watch?v=gujBKFGwjd4</a></li>
+		<li>Fiddler download: <a href="http://www.telerik.com/download/fiddler">http://</a><a href="http://www.telerik.com/download/fiddler">www.telerik.com/download/fiddler</a></li>
+		<li>Curl: Download from: <a href="http://curl.haxx.se/latest.cgi?curl=win64-ssl-sspi">http://curl.haxx.se/latest.cgi?curl=win64-ssl-sspi</a></li>
+		<li>Curl tutorials: <a href="http://curl.haxx.se/docs/httpscripting.html">http://</a><a href="http://curl.haxx.se/docs/httpscripting.html">curl.haxx.se/docs/httpscripting.html</a></li>
+	</ul>
+	</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h1>Project Setup</h1>
+
+<ul>
+	<li>Fiddler download: <a href="http://www.telerik.com/download/fiddler">http://www.telerik.com/download/fiddler</a></li>
+	<li>Curl: Download from: <a href="http://curl.haxx.se/latest.cgi?curl=win64-ssl-sspi">http://curl.haxx.se/latest.cgi?curl=win64-ssl-sspi</a>
+	<ul>
+		<li>Install nodejs</li>
+		<li>Install jasmine-node</li>
+		<li>Install mysql</li>
+	</ul>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h2>Try It Now</h2>
+
+<ol>
+	<li>Download and start Fiddler. Try the exercises in the video: <a href="https://www.youtube.com/watch?v=gujBKFGwjd4">https://www.youtube.com/watch?v=gujBKFGwjd4</a></li>
+	<li>Download and run curl. Try the exercises in the tutorial: <a href="http://curl.haxx.se/docs/httpscripting.html">http://</a><a href="http://curl.haxx.se/docs/httpscripting.html">curl.haxx.se/docs/httpscripting.html</a></li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h1>Simple Tutorial</h1>
+
+<p>In this tutorial, we will build a simple http server that will echo back the incoming request. You can see the full code for this tutorial in Tutorial.js file of the project git repo</p>
+
+<p>First, import the required http, queryparser modules.</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>var http = require(&#39;http&#39;);</p>
+
+			<p>var querystring = require(&#39;querystring&#39;);</p>
+
+			<p>var PORT = 3000;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Next, create an instance of the http server and make it listen on port 3000.</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>var PORT = 3000;</p>
+
+			<p>var server = http.createServer(handleRequest);</p>
+
+			<p>function handleRequest(request, response){</p>
+
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.end(&ldquo;Hello World&rdquo;);</p>
+
+			<p>}</p>
+
+			<p>&nbsp;</p>
+
+			<p>function handleRequest(request, response){</p>
+
+			<p>&nbsp;&nbsp;&nbsp; response.end(&ldquo;Hello World&rdquo;);</p>
+
+			<p>}</p>
+
+			<p>server.listen(PORT, function(){</p>
+
+			<p>&nbsp;&nbsp;&nbsp;&nbsp; console.log(&quot;server listening on port &quot; + PORT);</p>
+
+			<p>});</p>
+
+			<p>&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>You can run the above code by doing node tutorial.js. The http server will listen on port 3000 and the handleRequest function will be called when any incoming request is returned. For now, the handleRequest method simply returns &lsquo;Hello World&rdquo;.</p>
+
+<p>Now, lets expand handleRequest to echo back the incoming request details (such as method type, url and request body). For this, we&rsquo;ve to add event listeners for the request &ldquo;data&rdquo; and &ldquo;end&rdquo; events as described <a href="https://nodejs.org/api/stream.html#stream_class_stream_readable">here</a>.</p>
+
+<p>We implement a listener for &lsquo;data&rsquo; event where we add the latest message chunk received to a string buffer. When the &lsquo;end&rsquo; event is received, the bodyStr variable will have the full content of the incoming http request.</p>
+
+<p>&nbsp;</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>function handleRequest(request, response){</p>
+
+			<p>&nbsp;&nbsp; var bodyStr = &quot;&quot;;</p>
+
+			<p>&nbsp;&nbsp; request.on(&#39;data&#39;,function(chunk);</p>
+
+			<p>&nbsp;&nbsp; console.log(&quot;recvd &quot; + chunk.toString());</p>
+
+			<p>&nbsp;&nbsp;&nbsp; bodyStr += chunk.toString();</p>
+
+			<p>&nbsp;});</p>
+
+			<p>&nbsp;request.on(&#39;end&#39;, function() {</p>
+
+			<p>&nbsp; var str = &quot;Received &quot; + request.method + &quot; request for &quot; + request.url + &quot; body: &quot; + bodyStr;</p>
+
+			<p>&nbsp; console.log(str);</p>
+
+			<p>&nbsp; response.end(JSON.stringify(str));</p>
+
+			<p>&nbsp;});</p>
+
+			<p>}</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>You can look at the final code in Tutorial.js. You can also run the basic tests by running jasmine-node spec\tests\TutorialSpec.js</p>
+
+<h1>Project Activities</h1>
+
+<p>&nbsp;</p>
+
+<h2>CalculatorHttpService</h2>
+
+<p>In this activity, you will implement a REST service that supports the following operations:</p>
+
+<ol>
+	<li>GET /calculator/sum?op1=&lt;num&gt;&amp;op2=&lt;num&gt; should return the sum of op1 and op2 in the JSON response.</li>
+	<li>POST /calculator/sum where the request body is the following JSON document: {&ldquo;op1&rdquo;:&rdquo;num&rdquo;,&rdquo;op2&rdquo;:&rdquo;num&rdquo;} and returns the sum of op1 and op2 in the response.</li>
+</ol>
+
+<p>You will write your code into CalculatorHttpService.js.</p>
+
+<h2>ContactsHttpService</h2>
+
+<p>In this activity, you will implement a REST service to manage contacts. The rest service will store/retrieve contacts in a mysql database. The rest service will implement the following operations:</p>
+
+<ol>
+	<li>GET /contacts/id &ndash; This will read the specified contact from the mysql database and return it in the response.</li>
+	<li>POST /contacts &ndash; This will accept a JSON payload, create the contact in mysql database and return id in the response. Format of JSON request body is: {&ldquo;firstName&rdquo;:&rdquo;&rdquo;,&rdquo;lastName&rdquo;:&rdquo;&rdquo;,&rdquo;phone&rdquo;:&rdquo;&rdquo;}</li>
+	<li>PUT /contacts/id &ndash; This will update the specified contact&rsquo;s details with the details in the JSON payload.</li>
+</ol>
+
+<p>You will write your code into ContactsHttpService.js</p>
+
+<h1>References</h1>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</body>
+</html>
