@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+	<title>nodejs-intro</title>
+	<meta content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)" name="GENERATOR" />
+	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+</head>
+<body bgcolor="#ffffff" pbzloc="153">
+<h1 pbzloc="160" style="margin-left: 216pt">NodeJS Introduction &ndash; NodeJS 101</h1>
+
+<p>&nbsp;</p>
+
+<h1 pbzloc="157">Overview</h1>
+
+<p pbzloc="162">You will learn how to build simple nodejs applications including reading/writing to files.</p>
+
+<h2>PreRequisites</h2>
+
+<p>&nbsp;</p>
+
+<p pbzloc="158">Projects you need to complete before trying this project:&nbsp; <a href="file:///D:/Projects/mrnd-nodejs-worksheet/docs/javascript-basics.html">JS101</a></p>
+
+<h1>Project Concepts</h1>
+
+<h2>&nbsp;</h2>
+
+<h2>What is nodeJS</h2>
+
+<p>Node.js is a platform built on Chrome&#39;s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.</p>
+
+<p>Node.js apps are developed using Javascript language. Node.js also provides additional JS APIs that can be used the node.js apps.</p>
+
+<p>Node.js is most commonly used to build server applications, though it can also be used to build command-line tools as well as desktop UI applications (using node-webkit).</p>
+
+<h2>File Persistence in nodeJS</h2>
+
+<p>In this project, you will use the fs module provided by node.js to maintain a file storing contacts (people&rsquo;s firstname, phone etc). . You will also need to be able to read and update a specific contact.</p>
+
+<p>To use the nodejs fs module, you need to add the following lines of code:</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>var fs = require(&#39;fs&#39;);</p>
+
+			<p>fs.writeFileSync(filename,&rdquo;hello!&rdquo;);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>You can then call filesystem APIs on the fs variable as shown above.</p>
+
+<p pbzloc="54">Note that the size of a contact record can vary based on length of the name/phone properties.</p>
+
+<p pbzloc="59"><img border="0" pbzloc="60" src="images/contactfile.png" /></p>
+
+<p pbzloc="63">&nbsp;</p>
+
+<p pbzloc="67">So, to write a contact to the file, we can take any of the following approaches:</p>
+
+<ol>
+	<li>Read the current contacts from file into an in-memory array. Add the new contact to the array and write the entire array out again. While this is not efficient, the code to write to the file is simple</li>
+</ol>
+
+<p style="margin-left: 36pt">&nbsp;</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p pbzloc="73">fs.writeFileSync(filename,JSON.stringify(contactsArray));</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p pbzloc="71">What if we only want to write only the new contact to file? To be able to do this, we need to know where in the file one contact record starts and where it ends.</p>
+
+<p>There are many ways of doing this including:</p>
+
+<ol>
+	<li>With each contact record, store its total length in terms of bytes, OR</li>
+	<li>OR, put a delimiter at the end of each record</li>
+</ol>
+
+<p>Code for approach 2 would look as follows (assumes . is the delimiter, but it can be any other character such as !)</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td pbzloc="76" style="width: 601px">
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; fs.appendFileSync(filename,JSON.stringify(contact));</p>
+
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; fs.appendFileSync(filename,&quot;.&quot;);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 pbzloc="77">&nbsp;</h2>
+
+<h2>&nbsp;</h2>
+
+<p>You can use the readFileSync API read all the contacts from the file.</p>
+
+<p>&nbsp;</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var str = fs.readFileSync(filename, {encoding: &quot;utf8&quot;});</p>
+
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var contactsStrArray = str.split(&quot;.&quot;);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>appendFile writes the string as utf8 encoding by default, so you will have to specify the same value when you call readFileSync. Since the contacts are separated by a &ldquo;.&rdquo;, you can split the string to get the strings representing the contacts and call JSON.parse() to parse them into objects.</p>
+
+<h2>Synchronous vs Async APIs</h2>
+
+<p>nodejs provides both Sync and Async versions of the fs APIs. The Sync APIs are less performant since they block the thread while waiting for the disk i/o to complete. For this activity, we will use the Sync APIs. Later projects will introduce you to the async APIs.</p>
+
+<h1>Project Setup</h1>
+
+<p>&nbsp;</p>
+
+<ol>
+	<li>Install node.js from <a href="https://nodejs.org/">nodejs</a> web site.</li>
+</ol>
+
+<p pbzloc="82" style="margin-left: 36pt">&nbsp;</p>
+
+<h3 pbzloc="99" style="margin-left: 36pt"><span style="color: #ff0000"><span pbzloc="91">TIP: Ensure you are running node.js installer from an Administrator command prompt</span></span>.</h3>
+
+<p pbzloc="84" style="margin-left: 36pt">&nbsp;</p>
+
+<ol>
+	<li value="2">Install jasmine-node from <a href="https://github.com/mhevery/jasmine-node">jasmine-node</a> website.</li>
+</ol>
+
+<p pbzloc="88" style="margin-left: 36pt">&nbsp;</p>
+
+<h3 pbzloc="89" style="margin-left: 36pt"><span pbzloc="95" style="color: #ff0000">TIP: Ensure you are running node.js installer from an Administrator command prompt.</span></h3>
+
+<p style="margin-left: 36pt">&nbsp;</p>
+
+<p style="margin-left: 36pt">&nbsp;</p>
+
+<h2 pbzloc="90">Try It Now</h2>
+
+<h3>nodejs as a JS execution engine</h3>
+
+<p>From the project src folder, type node start.js.</p>
+
+<p pbzloc="101"><img border="0" src="images/nodestart.png" /></p>
+
+<p pbzloc="123">&nbsp;</p>
+
+<p>Node.exe is the executable that runs a node.js application. This is similar to java.exe or python.exe running Java/Python apps respectively.</p>
+
+<p>If you run node.exe without any arguments, it starts a node shell that you can use as an interactive shell as shown below:</p>
+
+<p pbzloc="133"><img border="0" src="images/nodeshell.png" /></p>
+
+<p pbzloc="137">&nbsp;</p>
+
+<h3 pbzloc="138" style="margin-left: 36pt"><span style="color: #ff0000">TIP: node shell is an easy way to quickly try out JavaScript/nodejs APIs to find out their behaviour.</span></h3>
+
+<p>&nbsp;</p>
+
+<h1>Tutorial</h1>
+
+<p pbzloc="139">In this tutorial, we will show how to read and write to a file in node.JS. First, you&rsquo;ve to import or include the fs module of node.JS. This can be done using the require statement as shown below.</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>var fs = require(&#39;fs&#39;);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Next, we can call the writeFileSync API to write the data to a file.</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>var str = &quot;Hello, World!&quot;;</p>
+
+			<p>fs.writeFileSync(&quot;..\\data\\hello.json&quot;, str);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p pbzloc="143">&nbsp;</p>
+
+<h3 pbzloc="148" style="margin-left: 36pt"><span style="color: #ff0000">TIP: Ensure the directory for the file Exists. You will get Error: ENOENT, no such file or directory error if the directory does not exist.</span></h3>
+
+<h3 pbzloc="149" style="margin-left: 36pt"><span style="color: #ff0000">TIP: writeFileSync will create the file if it doesn&rsquo;t exist and overwrite it if the file already exists.</span></h3>
+
+<p>&nbsp;</p>
+
+<p pbzloc="150">Now, read the contents of the file back and print it to the console.</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>var str2 = fs.readFileSync(&quot;contact.json&quot;);</p>
+
+			<p>console.log(str2);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Run the above code and see the output written to the console. It&rsquo;ll be: &lt;Buffer 48 65 6c 6c 6f 2c 20 57 6f 72 6c 64 21&gt; since readFileSync by default returns the byte contents of the file.</p>
+
+<p>To get the text string back, specify utf8 as the encoding to use (writeFileSync uses utf8 encoding by default).</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="width: 601px">
+			<p>str2 = fs.readFileSync(&quot;contact.json&quot;,&quot;utf8&quot;);</p>
+
+			<p>console.log(str2);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Now, you should see &ldquo;Hello, World!&rdquo; getting printed to the console.</p>
+
+<p>You can see the complete code for this in tutorial.js of the git repo. You can run node tutorial.js to try this out yourself.</p>
+
+<h1>Project Activities</h1>
+
+<h2>AddContact</h2>
+
+<p>For this activity, you will implement a nodejs method that takes in a contact object and writes it to a file. The exact approach is your choice. You will use writeFileSync or appendFileSync APIs for this.</p>
+
+<h2>ReadContact</h2>
+
+<p>For this activity, you will implement a nodejs method that takes in a name as input and returns the contact objects from the file that match the given name.</p>
+
+<h2>UpdateContact</h2>
+
+<p>For this activity, you will implement a nodejs method that takes in a name and new phone number as input and updates the contact objects in the file that match the given name with the new phone number.</p>
+
+<p>Note that the updated contact information has to be saved back to the file.</p>
+
+<h2>DeleteContact</h2>
+
+<p>For this activity, you will implement a nodejs method that takes in a name as input and deletes all the matching contact records from the file.</p>
+
+<p>You will write your code in FilePersistence.js file according to the instructions given above. Familiarize yourself with nodejs FS APIs at: <a href="https://nodejs.org/api/fs.html">https://nodejs.org/api/fs.html</a></p>
+
+<h1>References</h1>
+
+<ol>
+	<li>Nodejs.org</li>
+	<li><a href="https://nodejs.org/api/fs.html">https://nodejs.org/api/fs.html</a></li>
+</ol>
+
+<h2>Next Project Recommendations</h2>
+
+<p pbzloc="45">&nbsp;</p>
+
+<p style="margin-left: 36pt">Node DB CRUD &ndash; NodeJS 102</p>
+
+<p style="margin-left: 36pt">Adding a simple http Server &ndash; NodeJS 103</p>
+
+<p style="margin-left: 36pt">Add Express routing &ndash; NodeJS 104</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</body>
+</html>
