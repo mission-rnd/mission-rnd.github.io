@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+	<title>js-basics</title>
+	<meta content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)" name="GENERATOR" />
+	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+</head>
+<body bgcolor="#ffffff">
+<h1 pbzloc="436" style="text-align: center">Javascript Basics</h1>
+
+<p>This is the project page for Introduction to JavaScript project.</p>
+
+<h1 pbzloc="445">Overview</h1>
+
+<p>In this project, we will code various activities to understand javascript basics. Javascript language reference can be found <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/About">here</a></p>
+
+<p pbzloc="446">Once you finish each of the activities, you can run projecttracker tool to verify if you&rsquo;ve completed the activity. You can download the projecttracker tool here(TBD). Overview of how to use the projecttracker tool is here(TBD).</p>
+
+<h1 pbzloc="443">Concepts</h1>
+
+<p pbzloc="438">Javascript is an interpreted (ie not compiled) language. It supports weak/dynamic typing. In this section, we will give a quick overview of various constructs in Javascript.</p>
+
+<h2>Variable Declaration</h2>
+
+<p>Variables are declared and initialized with the var keyword. The type of the variable is determined implicitly based on the value assigned to that variable.</p>
+
+<p pbzloc="449">In the example below, variable i is assigned a string value (&quot;hello&quot;) and hence its type is &#39;string&#39;</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<caption>&nbsp;</caption>
+	<tbody>
+		<tr>
+			<td pbzloc="456">
+			<p pbzloc="455">var&nbsp;str = &quot;hello&quot;;</p>
+
+			<p pbzloc="453">console.log(str);</p>
+
+			<p pbzloc="454">console.log(&quot;Type of Variable i is: &quot;, typeof(str));</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Weak Typing</h2>
+
+<p pbzloc="458">In Javascript, the type associated with a variable can change dynamically. In the example below, var&nbsp;str is assigned a string value at time of declaration.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>
+			<p pbzloc="457">var&nbsp;str = &quot;hello&quot;;</p>
+
+			<p pbzloc="451">console.log(&quot;Type of Variable i is: &quot;, typeof(str));</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>In Javascript, you can assign a non-string value (for example: number) as shown below:</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>
+			<p pbzloc="459">str&nbsp;= 5;</p>
+
+			<p pbzloc="460">console.log(&quot;Type of Variable&nbsp;str is: &quot;, typeof(str));</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p pbzloc="462">The type of variable&nbsp;str will now be number. This is an example of weak/dynamic typing. Strongly typed langauges such as Java, C# will raise a compilation error for the above statement since i was originally declared to be of type string.</p>
+
+<h2>Data Types</h2>
+
+<p>Javascript supports a rich set of data types. The following code snippet shows examples of various data types.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>
+			<p>var i = 5; //number data type</p>
+
+			<p>var i = &quot;hello world&quot;; //string data type</p>
+
+			<p>var i = true; //boolean</p>
+
+			<p>var i = [1,2,3]; // array data type</p>
+
+			<p>&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Arrays</h2>
+
+<p>Javascript arrays can be initialized as follows:</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td pbzloc="464">
+			<p>var arr = [1,2,3];</p>
+
+			<p>var&nbsp;arr &nbsp;= new Array();</p>
+
+			<p>arr.push(1);</p>
+
+			<p>arr.push(2);</p>
+
+			<p>arr.push(3);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Javascript arrays support the standard operators on arrays to determine length, get/set values etc.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>
+			<p>for(var i = 0; i &lt; arr.length; i++){</p>
+
+			<p>&nbsp;&nbsp;&nbsp; console.log(arr[i]);</p>
+
+			<p>}</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h2>Objects</h2>
+
+<p>Javascript supports objects. You can think of a Javascript object as a container for named values as shown in the example below. As you can see in the code snippet, you can dynamically add properties to an object and set its value.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>
+			<p>var person = new Object();</p>
+
+			<p>person.firstName = &quot;Bill&quot;;</p>
+
+			<p>person.lastName = &quot;Gates&quot;;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Another common way of declaring an object is by specifying the property name/value pairs inside a {} section.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>var person = {firstName: &quot;Bill&quot;, lastName: &quot;Gates&quot;};</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Named Constructors</h2>
+
+<p>In languages such as Java, you can create a class Person and create instances of this class by calling the constructor of class Person. You can do this in JavaScript as follows.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td pbzloc="466">
+			<p>function Person(firstName, lastName){</p>
+
+			<p>this.firstName = firstName;</p>
+
+			<p>this.lastName = lastName;</p>
+
+			<p>}</p>
+
+			<p>var p = new Person(&quot;Bill&quot;,&quot;Gates&quot;);</p>
+
+			<p>&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>functions in JavaScript are objects as well, so the Person() function defined above acts both as a function as well as an object type. You can now create instances of Person object through a new Person() statement.</p>
+
+<p>&nbsp;</p>
+
+<h2>TypeOf, InstanceOf Operators</h2>
+
+<p>The typeof operator will help you determine the type of a variable.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>typeof 37 === &#39;number&#39;;<br />
+			typeof &quot;hello&quot; === &#39;string&#39;<br />
+			typeof [1,2,3] === object //note that the type is an Object and not Array<br />
+			typeof new Date() === &#39;object&#39; //note that the type is an Object and not Date<br />
+			&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>As you can see above, for instances of objects (including Arrays), typeof only returns &#39;object&#39; as the type. You can use instanceof operator to verify if a particular instance is of a specific object type.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td>
+			<p>[1,2,3] instanceof Array; //returns true</p>
+
+			<p>var i = [1,2,3]</p>
+
+			<p>i instanceof Array; //returns true</p>
+
+			<p>var d = new Date();</p>
+
+			<p>d instanceof Date; // returns true</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>&nbsp;</h2>
+
+<h2>Serialization and DeSerialization</h2>
+
+<p pbzloc="469">You can use JSON.stringify() to convert a javascript variable to a string. You can use JSON.parse() to parse a string input and create a javascript value from the string.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+	<tbody>
+		<tr>
+			<td pbzloc="468">
+			<p>var person = new Object();</p>
+
+			<p>person.firstName = &quot;Bill&quot;;</p>
+
+			<p>person.lastName = &quot;Gates&quot;;</p>
+
+			<p>console.log(JSON.stringify(person)); //creates a string value</p>
+
+			<p>var str = &#39;{&quot;firstName&quot;:&quot;Bill&quot;,&quot;lastName&quot;:&quot;Gates&quot;}&#39;;</p>
+
+			<p>var person2 = JSON.parse(str); // parses str and creates an object.</p>
+
+			<p>console.log(person2.firstName);</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h1>Project Setup</h1>
+
+<ol>
+	<li>Install node.js from <a href="https://nodejs.org/">nodejs</a> web site.</li>
+</ol>
+
+<p style="margin-left: 36pt"><span style="color: #ff0000"><span>TIP: Ensure you are running node.js installer from an Administrator command prompt</span></span>.</p>
+
+<ol>
+	<li value="2">Install jasmine-node from <a href="https://github.com/mhevery/jasmine-node">jasmine-node</a> website.</li>
+</ol>
+
+<p style="margin-left: 36pt"><span style="color: #ff0000">TIP: Ensure you are running node.js installer from an Administrator command prompt.</span></p>
+
+<p style="margin-left: 36pt">&nbsp;</p>
+
+<p style="margin-left: 36pt">&nbsp;</p>
+
+<h2>Try It Now</h2>
+
+<h3>nodejs as a JS execution engine</h3>
+
+<p>From the project src folder, type node start.js.</p>
+
+<p><img border="0" src="images/nodestart.png" /></p>
+
+<p>&nbsp;</p>
+
+<p>Node.exe is the executable that runs a node.js application. This is similar to java.exe or python.exe running Java/Python apps respectively.</p>
+
+<p>If you run node.exe without any arguments, it starts a node shell that you can use as an interactive shell as shown below:</p>
+
+<p><img border="0" src="images/nodeshell.png" /></p>
+
+<p pbzloc="430">&nbsp;</p>
+
+<h3 style="margin-left: 36pt"><span pbzloc="439" style="color: #ff0000">TIP: node shell is an easy way to quickly try out JavaScript/nodejs APIs to find out their behaviour.</span></h3>
+
+<p pbzloc="432">&nbsp;</p>
+
+<h1 pbzloc="433">Tutorial</h1>
+
+<p pbzloc="440">All the code snippets used in the Concepts section are available in src\tutorial.js file.</p>
+
+<p pbzloc="441">You can run node tutorial.js to run the tutorial examples.</p>
+
+<h1>Project Activities</h1>
+
+<h2>Introduction</h2>
+
+<p>This has the obligatory Hello World activity. You&rsquo;ve to implement a HelloWorld function in JavaScript that returns the string &ldquo;HelloWorld&rdquo;.</p>
+
+<p>Second activity is to implement a JavaScript function that takes 2 numbers as inputs and returns their sum.</p>
+
+<p>&nbsp;</p>
+
+<h2>Working with Arrays</h2>
+
+<h3>SumOfArray</h3>
+
+<p>In this activity, you will implement a JavaScript function that iterates through all the numbers in an array and returns their sum.</p>
+
+<h3>SumOfUniqueNumbers</h3>
+
+<p>In this activity, you will build on the earlier activity by implementing a JavaScript function that sums only the unique numbers in an array. You will learn how to use a secondary data structure and/or using nested loops to achieve this.</p>
+
+<h3>SumOfDiagonalCells (Multi-Dimensional Arrays)</h3>
+
+<p>In this activity, you will learn how to implement multi-dimensional arrays. You have to write a JavaScript function that validates whether the input array is a multi-dimensional array of the right type and calculate the sum of its diagonal cells.</p>
+
+<h2>Dynamic Typing</h2>
+
+<p>This activity will give you an understanding of how dynamic typing works in JavaScript. You will learn how to perform runtime type checks.&nbsp; As a side note, compilers for statically typed languages such as Java will automatically do this for you.</p>
+
+<h2>Working with Strings</h2>
+
+<h3>Reversing a String</h3>
+
+<p>This is a simple activity that introduces you to strings. You will learn how to determine length of a string, access each character of a string.</p>
+
+<p>&nbsp;</p>
+
+<h3>First Names Only, Please</h3>
+
+<p>For this activity, you will write a function that has to parse a list of names and return an array containing only the first names. You will learn how to split strings and how to manipulate array elements.</p>
+
+<h3>Paragraph Creator</h3>
+
+<p>For this activity, you will write a function that creates a paragraph from an input set of sentences. You will learn how string concatenation works in JavaScript.</p>
+
+<h2>Working with Date, Time</h2>
+
+<p>In this activity, you will learn how to represent a date in JavaScript. You will also learn how to find out the given day, month, year of a given date.</p>
+
+<h2>Working with Objects</h2>
+
+<h2>&nbsp;</h2>
+
+<h3>Dynamic Properties</h3>
+
+<p>&nbsp;</p>
+
+<p>You will get to the heart of what makes objects special in JavaScript. A JavaScript object is a dynamic collection of properties and methods. You will learn how to type check for an object, iterate over an object&rsquo;s properties and get property values dynamically.</p>
+
+<h2>Serialization</h2>
+
+<p>Serialization is the process of converting the value of an in-memory variable to a text representation. Deserialization is the reverse process of creating an in-memory variable from a text representation.</p>
+
+<p>In the first set of activities, you will learn how to serialize/deserialize variables of primitive data types such as numbers, strings, date.</p>
+
+<h3>JSON Serialization</h3>
+
+<p>In the second set of activities, you will learn how to use JSON built-in methods to serialize/deserialize any javascript object and arrays.</p>
+
+<h3>&nbsp;</h3>
+
+<h3>Exception Handling</h3>
+
+<p>Javascript has support for exception handling. You will learn how to catch exceptions raised on bad inputs and handle them gracefully.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1>Summary</h1>
+
+<p>If you&rsquo;ve completed the above activities, you will get a working knowledge of Javascript. You can then proceed to learning how to use Javascript in web UI by taking the AngularJS project, or on app servers by taking the nodeJS project.</p>
+
+<h1>References</h1>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</body>
+</html>
