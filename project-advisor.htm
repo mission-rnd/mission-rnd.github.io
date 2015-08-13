@@ -105,18 +105,27 @@ ul
 -->
 	</style>
 </head>
-<body lang="EN-IN" pbzloc="502">
+<body lang="EN-IN">
 <div class="WordSection1">
-<p align="center" class="MsoNormal" style="text-align: center; line-height: normal"><b><span pbzloc="0" style="font-size: 24pt">Project Tracker</span></b></p>
-<p/>
-<p> Watch the following Video and then read the instructions below to help you get started.</p>
-<p/>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YLutLKiy7YM" frameborder="0" allowfullscreen></iframe>
-<p/>
+<p align="center" class="MsoNormal" style="text-align: center; line-height: normal"><b><span pbzloc="63" style="font-size: 24pt">Project Tracker</span></b></p>
+
+<p>&nbsp;</p>
+
+<p>Watch the following Video and then read the instructions below to help you get started.</p>
+
+<p><iframe allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/YLutLKiy7YM" width="560"></iframe></p>
+
+<p>&nbsp;</p>
+
 <p class="MsoNormal" style="line-height: normal"><b><span style="font-size: 18pt">Getting Started:</span></b></p>
 
 <ol>
-	<li class="MsoNormal" style="line-height: normal">Signup for a github account at: <a href="http://github.com/">http://github.com/</a>&nbsp;if you dont have a github account</li>
+	<li>
+	<h4>Install git from <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a>&nbsp; and allow the installer to add git.exe to your PATH environment variable.&nbsp;&nbsp;<span style="color: #ff0000"><span> </span></span></h4>
+
+	<p><span style="color: #ff0000"><span>TIP: Ensure git.exe is available through your PATH Environment variable.</span></span></p>
+	</li>
+	<li class="MsoNormal" pbzloc="64" style="line-height: normal">Signup for a github account at: <a href="http://github.com/">http://github.com/</a>&nbsp;if you dont have a github account</li>
 	<li class="MsoNormal" style="line-height: normal">cd to the directory where you unzipped the tool (say G:\ProjectAdvisor) and run main.exe from that directory</li>
 	<li class="MsoNormal" style="line-height: normal"><span style="font-size: 13pt">Specify the directory where you want to copy the project code files&nbsp;using <span style="background-color: #ff0000">project directory </span>command. </span><em>Usage : <strong>project directory</strong></em>
 	<p><span><strong><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em></strong>It will prompt the user to enter absolute path of the destination directory. If the directory exists, the project tracking tool will be configured to that specified directory.&nbsp;</span>Else a new directory is created and the tool will be configured to that directory. In the screenshot below, we are specifying G:\sample as the directory where the project files should be copied into.</p>
@@ -125,48 +134,48 @@ ul
 	<p style="margin-left: 72pt"><span><img height="118" id="Picture 1" src="project-advisor_files/directory.png" width="572" /></span></p>
 	</li>
 	<li class="MsoNormal" style="line-height: normal"><font size="4">Login to the tool using the <span style="background-color: #ff0000">project login </span>command. </font><em>Usage : <strong>project login</strong></em>
-	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span pbzloc="505" style="font-size: 18px"> Use your firstname_lastname as your username when prompted by the tool..&nbsp;&nbsp; <img border="0" src="project-advisor_files/login.png" /></span></p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 18px"> Use your firstname_lastname as your username when prompted by the tool..&nbsp;&nbsp; <img border="0" src="project-advisor_files/login.png" /></span></p>
 	</li>
 	<li class="MsoNormal" style="line-height: normal">
 	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>Initialize the project using the project init </span>command. This command will show the list of projects available and will prompt you for the project you want to work on.</p>
 
 	<p><em><span>&nbsp;&nbsp;&nbsp;&nbsp; Usage : <strong>project init&nbsp;</strong></span></em></p>
 
-	<p pbzloc="507">&nbsp;&nbsp;&nbsp;&nbsp; Enter the name of the project which you want to start working on, This command will also create a repo in your git hub account.&nbsp;When requested, provide correct user credentials&nbsp;of the git hub account.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp; Enter the name of the project which you want to start working on, This command will also create a repo in your git hub account.&nbsp;When requested, provide correct user credentials&nbsp;of the git hub account.</p>
 
 	<p>&nbsp;</p>
 
-	<p pbzloc="508"><img height="377" id="Picture 2" src="project-advisor_files/init.png" width="602" /></p>
+	<p><img height="377" id="Picture 2" src="project-advisor_files/init.png" width="602" /></p>
 	</li>
 	<li><span>Complete the assignments by coding the activities in the project directory (G:\Samples\Src in the example below). Each project is broken into a set of activities. Once you have coded an activity, you can verify if your code is correct by running predefined test cases. The pre-defined tests are under the spec folder.</span></li>
 	<li class="MsoNormal" style="line-height: normal"><span style="font-size: 13pt">Test your code&nbsp;against the predefined test suites by running the <span style="background-color: #ff0000">project submit</span> command. <span><em>Usage : <strong>project submit<img height="355" id="Picture 3" src="project-advisor_files/test.png" width="601" /></strong></em></span></span></li>
 </ol>
 
-<p class="MsoListParagraphCxSpLast" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt">&nbsp;&nbsp;&nbsp;&nbsp; The project submit command will also push your changes to your personal project git repo once all tests for the given activity is completed. </span><span pbzloc="509" style="font-size: 13pt">Repeat steps 7 and step 8, till all the project&nbsp;activities have been completed.</span></p>
+<p class="MsoListParagraphCxSpLast" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt">&nbsp;&nbsp;&nbsp;&nbsp; The project submit command will also push your changes to your personal project git repo once all tests for the given activity is completed. </span><span style="font-size: 13pt">Repeat steps 7 and step 8, till all the project&nbsp;activities have been completed.</span></p>
 
 <p class="MsoNormal" style="line-height: normal"><b><span style="font-size: 24pt">&nbsp;Other useful commands:</span></b></p>
 
 <p class="MsoListParagraphCxSpFirst" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt; font-family: Symbol">&middot;<span style="font: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><i><span style="font-size: 13pt">project init --continue</span></i></b></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span pbzloc="13" style="font-size: 12pt">Used in case of project init failure while creating github repo. </span><span pbzloc="14">If your github repo already exists for the project, you can either recreate it, or, clone your git hub repo into the directory.</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span style="font-size: 12pt">Used in case of project init failure while creating github repo. </span><span>If your github repo already exists for the project, you can either recreate it, or, clone your git hub repo into the directory.</span></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt; font-family: Symbol">&middot;<span pbzloc="12" style="font: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><i><span style="font-size: 13pt">project status</span></i></b></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt; font-family: Symbol">&middot;<span style="font: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><i><span style="font-size: 13pt">project status</span></i></b></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span pbzloc="15" style="font-size: 12pt">Used to know the current status of the user in the project. It shows the number of steps completed and the number of steps that are left to complete.</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span style="font-size: 12pt">Used to know the current status of the user in the project. It shows the number of steps completed and the number of steps that are left to complete.</span></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span pbzloc="10" style="font-size: 12pt">&nbsp;</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span style="font-size: 12pt">&nbsp;</span></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span pbzloc="9" style="font-size: 12pt"><img height="104" id="Picture 4" src="project-advisor_files/status.png" width="426" /></span></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span style="font-size: 12pt"><img height="104" id="Picture 4" src="project-advisor_files/status.png" width="426" /></span></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt; font-family: Symbol">&middot;<span pbzloc="8" style="font: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><i><span style="font-size: 13pt">project help</span></i></b></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt; font-family: Symbol">&middot;<span style="font: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><i><span style="font-size: 13pt">project help</span></i></b></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span pbzloc="7" style="font-size: 12pt">Used to print the help document on the console.</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal"><span style="font-size: 12pt">Used to print the help document on the console.</span></p>
 
-<p class="MsoListParagraphCxSpMiddle" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt; font-family: Symbol">&middot;<span pbzloc="6" style="font: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><i><span style="font-size: 13pt">project exit</span></i></b></p>
+<p class="MsoListParagraphCxSpMiddle" style="line-height: normal; text-indent: -18pt"><span style="font-size: 13pt; font-family: Symbol">&middot;<span style="font: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><i><span style="font-size: 13pt">project exit</span></i></b></p>
 
-<p class="MsoListParagraphCxSpLast" style="line-height: normal"><span pbzloc="5" style="font-size: 12pt">Used to exit from the project tracking tool.</span></p>
+<p class="MsoListParagraphCxSpLast" style="line-height: normal"><span style="font-size: 12pt">Used to exit from the project tracking tool.</span></p>
 
-<p class="MsoNormal" style="line-height: normal"><span pbzloc="4" style="font-size: 12pt">&nbsp;</span></p>
+<p class="MsoNormal" style="line-height: normal"><span style="font-size: 12pt">&nbsp;</span></p>
 </div>
 </body>
 </html>
