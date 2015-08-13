@@ -6,36 +6,36 @@
 	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
 </head>
 <body bgcolor="#ffffff">
-<h1 pbzloc="436" style="text-align: center">Javascript Basics</h1>
+<h1 style="text-align: center">Javascript Basics</h1>
 
 <p>This is the project page for Introduction to JavaScript project.</p>
 
-<h1 pbzloc="445">Overview</h1>
+<h1>Overview</h1>
 
 <p>In this project, we will code various activities to understand javascript basics. Javascript language reference can be found <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/About">here</a></p>
 
-<p pbzloc="446">Once you finish each of the activities, you can run projecttracker tool to verify if you&rsquo;ve completed the activity. You can download the projecttracker tool here(TBD). Overview of how to use the projecttracker tool is here(TBD).</p>
+<p>Once you finish each of the activities, you can run projecttracker tool to verify if you&rsquo;ve completed the activity. You can download the projecttracker tool here(TBD). Overview of how to use the projecttracker tool is here(TBD).</p>
 
-<h1 pbzloc="443">Concepts</h1>
+<h1>Concepts</h1>
 
-<p pbzloc="438">Javascript is an interpreted (ie not compiled) language. It supports weak/dynamic typing. In this section, we will give a quick overview of various constructs in Javascript.</p>
+<p>Javascript is an interpreted (ie not compiled) language. It supports weak/dynamic typing. In this section, we will give a quick overview of various constructs in Javascript.</p>
 
 <h2>Variable Declaration</h2>
 
 <p>Variables are declared and initialized with the var keyword. The type of the variable is determined implicitly based on the value assigned to that variable.</p>
 
-<p pbzloc="449">In the example below, variable i is assigned a string value (&quot;hello&quot;) and hence its type is &#39;string&#39;</p>
+<p>In the example below, variable i is assigned a string value (&quot;hello&quot;) and hence its type is &#39;string&#39;</p>
 
 <table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
 	<caption>&nbsp;</caption>
 	<tbody>
 		<tr>
-			<td pbzloc="456">
-			<p pbzloc="455">var&nbsp;str = &quot;hello&quot;;</p>
+			<td>
+			<p>var&nbsp;str = &quot;hello&quot;;</p>
 
-			<p pbzloc="453">console.log(str);</p>
+			<p>console.log(str);</p>
 
-			<p pbzloc="454">console.log(&quot;Type of Variable i is: &quot;, typeof(str));</p>
+			<p>console.log(&quot;Type of Variable i is: &quot;, typeof(str));</p>
 			</td>
 		</tr>
 	</tbody>
@@ -43,15 +43,15 @@
 
 <h2>Weak Typing</h2>
 
-<p pbzloc="458">In Javascript, the type associated with a variable can change dynamically. In the example below, var&nbsp;str is assigned a string value at time of declaration.</p>
+<p>In Javascript, the type associated with a variable can change dynamically. In the example below, var&nbsp;str is assigned a string value at time of declaration.</p>
 
 <table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
 	<tbody>
 		<tr>
 			<td>
-			<p pbzloc="457">var&nbsp;str = &quot;hello&quot;;</p>
+			<p>var&nbsp;str = &quot;hello&quot;;</p>
 
-			<p pbzloc="451">console.log(&quot;Type of Variable i is: &quot;, typeof(str));</p>
+			<p>console.log(&quot;Type of Variable i is: &quot;, typeof(str));</p>
 			</td>
 		</tr>
 	</tbody>
@@ -63,15 +63,15 @@
 	<tbody>
 		<tr>
 			<td>
-			<p pbzloc="459">str&nbsp;= 5;</p>
+			<p>str&nbsp;= 5;</p>
 
-			<p pbzloc="460">console.log(&quot;Type of Variable&nbsp;str is: &quot;, typeof(str));</p>
+			<p>console.log(&quot;Type of Variable&nbsp;str is: &quot;, typeof(str));</p>
 			</td>
 		</tr>
 	</tbody>
 </table>
 
-<p pbzloc="462">The type of variable&nbsp;str will now be number. This is an example of weak/dynamic typing. Strongly typed langauges such as Java, C# will raise a compilation error for the above statement since i was originally declared to be of type string.</p>
+<p>The type of variable&nbsp;str will now be number. This is an example of weak/dynamic typing. Strongly typed langauges such as Java, C# will raise a compilation error for the above statement since i was originally declared to be of type string.</p>
 
 <h2>Data Types</h2>
 
@@ -102,7 +102,7 @@
 <table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
 	<tbody>
 		<tr>
-			<td pbzloc="464">
+			<td>
 			<p>var arr = [1,2,3];</p>
 
 			<p>var&nbsp;arr &nbsp;= new Array();</p>
@@ -170,7 +170,7 @@
 <table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
 	<tbody>
 		<tr>
-			<td pbzloc="466">
+			<td>
 			<p>function Person(firstName, lastName){</p>
 
 			<p>this.firstName = firstName;</p>
@@ -231,12 +231,12 @@
 
 <h2>Serialization and DeSerialization</h2>
 
-<p pbzloc="469">You can use JSON.stringify() to convert a javascript variable to a string. You can use JSON.parse() to parse a string input and create a javascript value from the string.</p>
+<p>You can use JSON.stringify() to convert a javascript variable to a string. You can use JSON.parse() to parse a string input and create a javascript value from the string.</p>
 
 <table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
 	<tbody>
 		<tr>
-			<td pbzloc="468">
+			<td>
 			<p>var person = new Object();</p>
 
 			<p>person.firstName = &quot;Bill&quot;;</p>
@@ -291,17 +291,17 @@
 
 <p><img border="0" src="images/nodeshell.png" /></p>
 
-<p pbzloc="430">&nbsp;</p>
+<p>&nbsp;</p>
 
-<h3 style="margin-left: 36pt"><span pbzloc="439" style="color: #ff0000">TIP: node shell is an easy way to quickly try out JavaScript/nodejs APIs to find out their behaviour.</span></h3>
+<h3 style="margin-left: 36pt"><span style="color: #ff0000">TIP: node shell is an easy way to quickly try out JavaScript/nodejs APIs to find out their behaviour.</span></h3>
 
-<p pbzloc="432">&nbsp;</p>
+<p>&nbsp;</p>
 
-<h1 pbzloc="433">Tutorial</h1>
+<h1>Tutorial</h1>
 
-<p pbzloc="440">All the code snippets used in the Concepts section are available in src\tutorial.js file.</p>
+<p>All the code snippets used in the Concepts section are available in src\tutorial.js file.</p>
 
-<p pbzloc="441">You can run node tutorial.js to run the tutorial examples.</p>
+<p>You can run node tutorial.js to run the tutorial examples.</p>
 
 <h1>Project Activities</h1>
 
