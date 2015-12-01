@@ -6,7 +6,7 @@
 	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
 </head>
 <body bgcolor="#ffffff">
-<h1 align="center" pbzloc="42">Android Intro (ANDR 101)</h1>
+<h1 align="center" pbzloc="10">Android Intro (ANDR 101)</h1>
 
 <h2 id="Overview">Overview</h2>
 
@@ -17,18 +17,86 @@ Pre Requisites</h2>
 
 <p align="left">None.</p>
 
-<h2 align="left" id="Concepts">Concepts</h2>
+<h2 align="left" id="Setup" pbzloc="12">Setup</h2>
 
-<p align="left">&nbsp;</p>
+<p align="left" pbzloc="13">Follow the <a href="Getting_Started_on_Android_Projects.htm">Getting Started on Android document </a>to get your environment up and running for developing Android apps.</p>
 
-<h2 align="left" id="Setup" pbzloc="18">Setup</h2>
+<h2 align="left" id="Concepts" pbzloc="104">Concepts</h2>
 
-<p align="left">Follow the <a href="Getting_Started_on_Android_Projects.htm">Getting Started on Android document </a>to get your environment up and running for developing Android apps.</p>
+<p pbzloc="110">An android app has the following key components:</p>
 
-<h2 align="left" id="tutorial" pbzloc="23"><br />
-Tutorial</h2>
+<h3 pbzloc="108">Activities</h3>
 
-<p align="left" pbzloc="21">A follow-along tutorial that walks the students thru&#39; a simple activity of the project.</p>
+<p pbzloc="129">An app will have many UI screens. Each UI screen is implemented as an activity.&nbsp;The activity in turn uses many widgets (textbox, calendar, listview widgets) to render the UI as well as accept user inputs.&nbsp;&nbsp;The screenshot below is from an app you will be developing during the project.</p>
+
+<p pbzloc="132"><img border="0" src="images/android-intro-activity.png" /></p>
+
+<p pbzloc="127">&nbsp;</p>
+
+<p pbzloc="159">The screen shows a form for capturing contact details (Salutation, Name, Phone etc). This screen will be implemented as an activity. The activity in turn will make use of many widgets (Spinner, textbox, buttons etc) to render the screen as well as take inputs from the user.</p>
+
+<p pbzloc="160">There are 2 key files associated with each android activity: Layout files and code-behind implementation files.</p>
+
+<ol>
+	<li pbzloc="157">Layout files - In android, there is clean seperation of the screen layout from the java logic that is needed to render that screen. Look under app\src\main\res\layout\ folder of the android-intro project. This containts the layout files for all the activities. Open activity_contact.xml and you will find that it has the layout for the contact screen.</li>
+	<li pbzloc="79">Activity Implementation files - These are java classes that implement the activity. Look under app\src\main\java\com\example\hello\ContactActivity.java for the implementation of ContactActivity. You will find the following code snippet in that file</li>
+</ol>
+
+<p pbzloc="144">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea cols="21" name="setContent" pbzloc="84" rows="3" style="height: 54px; width: 522px">protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contact);</textarea></p>
+
+<p pbzloc="143">&nbsp;</p>
+
+<p pbzloc="162">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When an activity instance is created, it uses the setContentView() android API to load/access all the widgets associated with that specific layout file.</p>
+
+<h3 pbzloc="147">Intents</h3>
+
+<p pbzloc="185">You use intents to navigate from 1 screen (or activity) to another screen (or activity).</p>
+
+<p pbzloc="188"><img border="0" src="images/android-intent-overview.png" /></p>
+
+<p pbzloc="184">&nbsp;</p>
+
+<p pbzloc="175">&nbsp;</p>
+
+<p pbzloc="174">&nbsp;</p>
+
+<p pbzloc="173">For example: if you want to navigate from a contact list screen and to a screen that shows full details of that contact, you implement an Intent to do the navigation and passing data to the ContactDetail activity.</p>
+
+<p pbzloc="165">&nbsp;</p>
+
+<p pbzloc="192">&nbsp;</p>
+
+<h3 pbzloc="193">Android Manifest file</h3>
+
+<p pbzloc="196">Every android app has 1 app manifest file. This file is the androidmanifest.xml file located under app\src\main\AndroidManifest.xml - Open up the androidmanifest.xml file for your project. In it, you will find all the activities that are part of that project. Lets look at details for the ContactActivity listed in this file...</p>
+
+<p pbzloc="201"><textarea cols="22" name="contactmanifest" pbzloc="202" rows="10" style="height: 166px; width: 713px">        &lt;activity
+            android:name=&quot;.ContactActivity&quot;
+            android:label=&quot;@string/title_activity_contact&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+</textarea></p>
+
+<p pbzloc="204">&nbsp;</p>
+
+<p pbzloc="205">A few key aspects to pay attention to:</p>
+
+<p pbzloc="213">1) android:name is used to identify the Java class that implements the activity.&nbsp; You can read more about this attribute at the <a class="0" href="http://developer.android.com/guide/topics/manifest/activity-element.html">Android docs website.</a></p>
+
+<p pbzloc="222">2) The <a class="0" href="http://developer.android.com/reference/android/content/Intent.html#CATEGORY_LAUNCHER">Launcher intent </a>specifies that a launch icon be created for this activity and placed in the launcher screen.</p>
+
+<p pbzloc="57">This is enough to get started. There are quite a few other components such as Services (background tasks etc) which we will introduce at later stages.</p>
+
+<h2 align="left" pbzloc="59">Tutorial</h2>
+
+<p align="left" pbzloc="223">A follow-along tutorial that walks the students thru&#39; a simple activity of the project.</p>
 
 <h2 align="left" id="Activities" pbzloc="26">Project Activities<br />
 &nbsp;</h2>
