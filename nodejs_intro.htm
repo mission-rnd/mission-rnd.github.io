@@ -6,7 +6,7 @@
 	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
 </head>
 <body bgcolor="#ffffff">
-<h1 pbzloc="3" style="margin-left: 216pt">NodeJS Introduction &ndash; NodeJS 101</h1>
+<h1 pbzloc="39" style="margin-left: 216pt">NodeJS Introduction &ndash; NodeJS 101</h1>
 
 <p>&nbsp;</p>
 
@@ -16,13 +16,13 @@
 
 <h2>PreRequisites</h2>
 
-<p pbzloc="22">&nbsp;</p>
+<p>&nbsp;</p>
 
 <p>Projects you need to complete before trying this project:&nbsp; <a href="javascript-basics.htm">JS101</a></p>
 
-<h1 pbzloc="5">Project Concepts</h1>
+<h1>Project Concepts</h1>
 
-<h2 pbzloc="4">&nbsp;</h2>
+<h2 pbzloc="47">&nbsp;</h2>
 
 <h2>What is nodeJS</h2>
 
@@ -56,9 +56,9 @@
 
 <p>Note that the size of a contact record can vary based on length of the name/phone properties.</p>
 
-<p pbzloc="23"><img border="0" src="http://mission-rnd.github.io/assets/images/contactfile.png" /></p>
+<p><img border="0" src="http://mission-rnd.github.io/assets/images/contactfile.png" /></p>
 
-<p>&nbsp;</p>
+<p pbzloc="46">&nbsp;</p>
 
 <p>So, to write a contact to the file, we can take any of the following approaches:</p>
 
@@ -78,16 +78,16 @@
 	</tbody>
 </table>
 
-<p>What if we only want to write only the new contact to file? To be able to do this, we need to know where in the file one contact record starts and where it ends.</p>
+<p pbzloc="45">What if we only want to write only the new contact to file? To be able to do this, we need to know where in the file one contact record starts and where it ends.</p>
 
-<p>There are many ways of doing this including:</p>
+<p pbzloc="44">There are many ways of doing this including:</p>
 
 <ol>
-	<li pbzloc="5">With each contact record, store its total length in terms of bytes, OR</li>
-	<li>OR, put a delimiter at the end of each record</li>
+	<li pbzloc="43">With each contact record, store its total length in terms of bytes, OR</li>
+	<li pbzloc="42">OR, put a delimiter at the end of each record</li>
 </ol>
 
-<p>Code for approach 2 would look as follows (assumes . is the delimiter, but it can be any other character such as !)</p>
+<p pbzloc="41">Code for approach 2 would look as follows (assumes . is the delimiter, but it can be any other character such as !)</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -107,7 +107,7 @@
 
 <p>You can use the readFileSync API read all the contacts from the file.</p>
 
-<p pbzloc="379">&nbsp;</p>
+<p>&nbsp;</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -125,23 +125,23 @@
 
 <p>appendFile writes the string as utf8 encoding by default, so you will have to specify the same value when you call readFileSync. Since the contacts are separated by a &ldquo;.&rdquo;, you can split the string to get the strings representing the contacts and call JSON.parse() to parse them into objects.</p>
 
-<h2 pbzloc="399">Synchronous vs Async APIs</h2>
+<h2>Synchronous vs Async APIs</h2>
 
-<p pbzloc="400">nodejs provides both Sync and Async versions of the fs APIs. The Sync APIs are less performant since they block the thread while waiting for the disk i/o to complete. For this activity, we will use the Sync APIs. Later projects will introduce you to the async APIs.</p>
+<p pbzloc="48">nodejs provides both Sync and Async versions of the fs APIs. The Sync APIs are less performant since they block the thread while waiting for the disk i/o to complete. For this activity, we will use the Sync APIs. Later projects will introduce you to the async APIs.</p>
 
-<h1 pbzloc="405">Project Setup</h1>
+<h1>Project Setup</h1>
 
-<p pbzloc="404">&nbsp;</p>
+<p>&nbsp;</p>
 
 <ol>
-	<li pbzloc="6">Install node.js from <a href="https://nodejs.org/">nodejs</a> web site.</li>
+	<li>Install node.js from <a href="https://nodejs.org/">nodejs</a> web site.</li>
 </ol>
 
-<p pbzloc="384" style="margin-left: 36pt">&nbsp;</p>
+<p style="margin-left: 36pt">&nbsp;</p>
 
-<h3 style="margin-left: 36pt"><span style="color: #ff0000"><span pbzloc="383">TIP: Ensure you are running node.js installer from an Administrator command prompt</span></span>.</h3>
+<h3 style="margin-left: 36pt"><span style="color: #ff0000"><span>TIP: Ensure you are running node.js installer from an Administrator command prompt</span></span>.</h3>
 
-<p pbzloc="398" style="margin-left: 36pt">&nbsp;</p>
+<p style="margin-left: 36pt">&nbsp;</p>
 
 <ol>
 	<li value="2">Install jasmine-node from <a href="https://github.com/mhevery/jasmine-node">jasmine-node</a> website.</li>
@@ -151,13 +151,13 @@
 
 <h3 style="margin-left: 36pt"><span style="color: #ff0000">TIP: Ensure you are running node.js installer from an Administrator command prompt.</span></h3>
 
-<p pbzloc="7" style="margin-left: 36pt">&nbsp;</p>
+<p style="margin-left: 36pt">&nbsp;</p>
 
-<p pbzloc="380" style="margin-left: 36pt">&nbsp;</p>
+<p style="margin-left: 36pt">&nbsp;</p>
 
-<h2 pbzloc="381">Try It Now</h2>
+<h2>Try It Now</h2>
 
-<h3 pbzloc="397">nodejs as a JS execution engine</h3>
+<h3>nodejs as a JS execution engine</h3>
 
 <p>From the project src folder, type node start.js.</p>
 
@@ -167,7 +167,7 @@
 
 <p>Node.exe is the executable that runs a node.js application. This is similar to java.exe or python.exe running Java/Python apps respectively.</p>
 
-<p pbzloc="8">If you run node.exe without any arguments, it starts a node shell that you can use as an interactive shell as shown below:</p>
+<p>If you run node.exe without any arguments, it starts a node shell that you can use as an interactive shell as shown below:</p>
 
 <p><img border="0" src="http://mission-rnd.github.io/assets/images/nodeshell.png" /></p>
 
@@ -175,11 +175,11 @@
 
 <h3 style="margin-left: 36pt"><span style="color: #ff0000">TIP: node shell is an easy way to quickly try out JavaScript/nodejs APIs to find out their behaviour.</span></h3>
 
-<p pbzloc="390">&nbsp;</p>
+<p>&nbsp;</p>
 
 <h1>Tutorial</h1>
 
-<p pbzloc="26">In this tutorial, we will show how to read and write to a file in node.JS. First, you&rsquo;ve to import or include the fs module of node.JS. This can be done using the require statement as shown below.</p>
+<p pbzloc="49">In this tutorial, we will show how to read and write to a file in node.JS. First, you&rsquo;ve to import or include the fs module of node.JS. This can be done using the require statement as shown below.</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -191,9 +191,9 @@
 	</tbody>
 </table>
 
-<p>&nbsp;</p>
+<p pbzloc="50">&nbsp;</p>
 
-<p pbzloc="391">Next, we can call the writeFileSync API to write the data to a file.</p>
+<p>Next, we can call the writeFileSync API to write the data to a file.</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -207,15 +207,15 @@
 	</tbody>
 </table>
 
-<p pbzloc="392">&nbsp;</p>
+<p>&nbsp;</p>
 
-<h3 style="margin-left: 36pt"><span pbzloc="9" style="color: #ff0000">TIP: Ensure the directory for the file Exists. You will get Error: ENOENT, no such file or directory error if the directory does not exist.</span></h3>
+<h3 style="margin-left: 36pt"><span style="color: #ff0000">TIP: Ensure the directory for the file Exists. You will get Error: ENOENT, no such file or directory error if the directory does not exist.</span></h3>
 
 <h3 style="margin-left: 36pt"><span style="color: #ff0000">TIP: writeFileSync will create the file if it doesn&rsquo;t exist and overwrite it if the file already exists.</span></h3>
 
 <p>&nbsp;</p>
 
-<p>Now, read the contents of the file back and print it to the console.</p>
+<p pbzloc="51">Now, read the contents of the file back and print it to the console.</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -229,11 +229,11 @@
 	</tbody>
 </table>
 
-<p pbzloc="396">&nbsp;</p>
+<p>&nbsp;</p>
 
 <p>Run the above code and see the output written to the console. It&rsquo;ll be: &lt;Buffer 48 65 6c 6c 6f 2c 20 57 6f 72 6c 64 21&gt; since readFileSync by default returns the byte contents of the file.</p>
 
-<p pbzloc="27">To get the text string back, specify utf8 as the encoding to use (writeFileSync uses utf8 encoding by default).</p>
+<p>To get the text string back, specify utf8 as the encoding to use (writeFileSync uses utf8 encoding by default).</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -251,19 +251,19 @@
 
 <p>Now, you should see &ldquo;Hello, World!&rdquo; getting printed to the console.</p>
 
-<p pbzloc="394">You can see the complete code for this in tutorial.js of the git repo. You can run node tutorial.js to try this out yourself.</p>
+<p>You can see the complete code for this in tutorial.js of the git repo. You can run node tutorial.js to try this out yourself.</p>
 
-<h1 pbzloc="29">Project Activities</h1>
+<h1>Project Activities</h1>
 
-<h4 pbzloc="26"><span pbzloc="12" style="color: #ff0000">TIP: You can use any node.js/Javascript utility methods (such as string.split) to complete the activities. This will help you get familiar with node.js/Javascript APIs.</span></h4>
+<h4><span style="color: #ff0000">TIP: You can use any node.js/Javascript utility methods (such as string.split) to complete the activities. This will help you get familiar with node.js/Javascript APIs.</span></h4>
 
-<h2 pbzloc="31">AddContact</h2>
+<h2>AddContact</h2>
 
-<p pbzloc="395">For this activity, you will implement a nodejs method that takes in a contact object and writes it to a file. The exact approach is your choice. You will use writeFileSync or appendFileSync APIs for this.</p>
+<p>For this activity, you will implement a nodejs method that takes in a contact object and writes it to a file. The exact approach is your choice. You will use writeFileSync or appendFileSync APIs for this.</p>
 
 <h2>ReadContact</h2>
 
-<p pbzloc="30">For this activity, you will implement a nodejs method that takes in a name as input and returns the contact objects from the file that match the given name.</p>
+<p>For this activity, you will implement a nodejs method that takes in a name as input and returns the contact objects from the file that match the given name.</p>
 
 <h2>UpdateContact</h2>
 
@@ -286,7 +286,7 @@
 
 <h2>Next Project Recommendations</h2>
 
-<p pbzloc="29">&nbsp;</p>
+<p>&nbsp;</p>
 
 <p style="margin-left: 36pt">Node DB CRUD &ndash; NodeJS 102</p>
 

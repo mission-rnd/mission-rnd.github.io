@@ -6,7 +6,7 @@
 	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
 </head>
 <body bgcolor="#ffffff">
-<h1 align="center" pbzloc="10">Android Intro (ANDR 101)</h1>
+<h1 align="center" pbzloc="53">Android Intro (ANDR 101)</h1>
 
 <h2 id="Overview">Overview</h2>
 
@@ -21,7 +21,7 @@ Pre Requisites</h2>
 
 <p align="left" pbzloc="13">Follow the <a href="Getting_Started_on_Android_Projects.htm">Getting Started on Android document </a>to get your environment up and running for developing Android apps.</p>
 
-<h2 align="left" id="Concepts" pbzloc="104">Concepts</h2>
+<h2 align="left" id="Concepts" pbzloc="54">Concepts</h2>
 
 <p pbzloc="110">An android app has the following key components:</p>
 
@@ -42,7 +42,7 @@ Pre Requisites</h2>
 	<li pbzloc="79">Activity Implementation files - These are java classes that implement the activity. Look under app\src\main\java\com\example\hello\ContactActivity.java for the implementation of ContactActivity. You will find the following code snippet in that file</li>
 </ol>
 
-<p pbzloc="144">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea cols="21" name="setContent" pbzloc="84" rows="3" style="height: 54px; width: 522px">protected void onCreate(Bundle savedInstanceState) {
+<p pbzloc="144">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea cols="21" name="setContent" pbzloc="3" rows="3" style="height: 54px; width: 522px">protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);</textarea></p>
 
@@ -54,7 +54,7 @@ Pre Requisites</h2>
 
 <p pbzloc="185">You use intents to navigate from 1 screen (or activity) to another screen (or activity).</p>
 
-<p pbzloc="188"><img border="0" src="images/android-intent-overview.png" /></p>
+<p pbzloc="188"><img border="0" height="537" pbzloc="5" src="images/android-intent-overview.png" style="height: 537px; width: 878px" width="652" /></p>
 
 <p pbzloc="184">&nbsp;</p>
 
@@ -84,7 +84,7 @@ Pre Requisites</h2>
         &lt;/activity&gt;
 </textarea></p>
 
-<p pbzloc="204">&nbsp;</p>
+<p pbzloc="55">&nbsp;</p>
 
 <p pbzloc="205">A few key aspects to pay attention to:</p>
 
@@ -92,52 +92,132 @@ Pre Requisites</h2>
 
 <p pbzloc="222">2) The <a class="0" href="http://developer.android.com/reference/android/content/Intent.html#CATEGORY_LAUNCHER">Launcher intent </a>specifies that a launch icon be created for this activity and placed in the launcher screen.</p>
 
-<p pbzloc="57">This is enough to get started. There are quite a few other components such as Services (background tasks etc) which we will introduce at later stages.</p>
+<p pbzloc="70">This is enough to get started. There are quite a few other components such as Services (background tasks etc) which we will introduce at later stages.</p>
 
-<h2 align="left" pbzloc="59">Tutorial</h2>
+<h2 align="left" pbzloc="69">Tutorial</h2>
 
-<p align="left" pbzloc="223">A follow-along tutorial that walks the students thru&#39; a simple activity of the project.</p>
+<p align="left" pbzloc="68">Here is a tutorial you can follow along to build your first android app. You will find activity_tutorial.xml and Tutorial.java files in your project that you can use.</p>
 
-<h2 align="left" id="Activities" pbzloc="26">Project Activities<br />
+<p align="left" pbzloc="67">In this tutorial, we will build an app with a simple screen as follows:</p>
+
+<p align="left" pbzloc="66"><img border="0" src="images/android-intro-tutorial2.png" /></p>
+
+<h2 align="left" pbzloc="65">&nbsp;</h2>
+
+<p align="left" pbzloc="26">Do the following to build the above screen:</p>
+
+<ol>
+	<li align="left" pbzloc="30">Start Android Studio. File -&gt; Open and give the directory where you have created the android-intro project using the Project submission tool.</li>
+	<li align="left" pbzloc="32">Open the activity_tutorial.xml file found under app\src\main\res\layout\activity_tutorial.xml</li>
+	<li align="left" pbzloc="72">Drag-n-drop TextView and Button widgets on the design canvas. OR, you can switch to the text tab and uncomment the widgets already pre-added to the file.</li>
+</ol>
+
+<p pbzloc="74">Now, open the Tutorial.java file and start implementing the activity. First, we need to set the textView widget&#39;s text property. This can be done as follows:</p>
+
+<p pbzloc="77"><textarea cols="19" name="setText" pbzloc="78" rows="10" style="height: 166px; width: 908px">        //In activity_tutorial.xml file, you will have add a TextView widget
+        // with id=idTutorialText.
+        //Get a handle to the widget and set its value as shown below in the code.
+
+        //You can uncomment the lines below and then run the Tutorial activity
+        //
+        textWidget = (TextView) findViewById(R.id.idTutorialText);
+
+        textWidget.setText(&quot;My 1st Android Tutorial&quot;);
+</textarea></p>
+
+<p align="left" pbzloc="84">&nbsp;</p>
+
+<p align="left" pbzloc="93">Next, we need to implement a handler that will show a toast message every time a user clicks the button. For this, we first need to register the onClick listener for the button. You can do this registration</p>
+
+<p align="left" pbzloc="94">by calling the setOnClickListener() method as part of the onCreate() method of the activity.</p>
+
+<p align="left" pbzloc="90"><textarea cols="1" name="registeronClick" pbzloc="91" rows="10" style="height: 166px; width: 922px">    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tutorial);
+
+        //Get a handle to the Button widget and set its onClick listener (or
+        //callback function.
+
+        button = (Button) findViewById(R.id.idTutorialButton);
+        button.setOnClickListener(this);
+    }
+</textarea></p>
+
+<p align="left" pbzloc="103">&nbsp;</p>
+
+<p align="left" pbzloc="105">Then, in the onClick() method, call Toast.MakeToast() method to show the message as given below:</p>
+
+<p align="left" pbzloc="107"><textarea cols="13" name="idOnClick" pbzloc="108" rows="10" style="height: 166px; width: 925px">    @Override
+    public void onClick(View v) {
+
+        //Show a Toast message and set the text.
+
+        Toast.makeText(this, &quot;Great Job on Completing the Tutorial!&quot;, Toast.LENGTH_SHORT).show();
+        textWidget.setText(&quot;Great Job on Completing the Tutorial!&quot;);
+
+    }
+</textarea></p>
+
+<p align="left" pbzloc="114">&nbsp;</p>
+
+<p align="left" pbzloc="132">Now, you are ready to run the tutorial. In Android studio, right click on the Tutorial.java file and select the Run Tutorial option.</p>
+
+<p align="left" pbzloc="131"><img border="0" src="images/android-intro-runtutorial.png" /></p>
+
+<h2 align="left" id="Activities" pbzloc="130">Project Activities<br />
 &nbsp;</h2>
 
-<p pbzloc="24">&nbsp;Here are the activities you will work through in this project.</p>
+<p pbzloc="119">Now that you are done with the Tutorial, &nbsp;Here are the activities you will work through in this project.</p>
 
-<h3 id="HelloWorldActivity">Hello World App</h3>
+<h3 id="HelloWorldActivity" pbzloc="56">Hello World App</h3>
 
 <p pbzloc="25">In this activity, you will build an app with the following screen. The app shows 2 TextView widgets each with the text: &quot;This is my Hello World App&quot;. One of the widgets uses a larger text size (size = 33) as shown below.</p>
 
 <p>&nbsp;</p>
 
-<p><img border="0" src="http://mission-rnd.github.io/assets/images/android-intro-helloapp.png" /></p>
+<p pbzloc="63"><img border="0" src="http://mission-rnd.github.io/assets/images/android-intro-helloapp.png" /></p>
 
 <p>&nbsp;</p>
 
-<h3 id="EchoActivity" pbzloc="43">Echo App</h3>
+<h3 id="EchoActivity" pbzloc="129">Echo App</h3>
 
-<p>In this activity, you will build an app with the following screen. As text is entered into the EditText widget (id=echoEditText), it is displayed in the textview widget (id=echoResults) as shown below.</p>
+<p pbzloc="128">In this activity, you will build an app with the following screen. As text is entered into the EditText widget (id=echoEditText), it is displayed in the textview widget (id=echoResults) as shown below.</p>
 
-<p>You will learn about TextBox Widget as well as implementing <a class="0" href="http://developer.android.com/reference/android/widget/TextView.html#addTextChangedListener(android.text.TextWatcher)">TextChangedListener</a></p>
+<p pbzloc="127">You will learn about TextBox Widget as well as implementing <a class="0" href="http://developer.android.com/reference/android/widget/TextView.html#addTextChangedListener(android.text.TextWatcher)">TextChangedListener</a></p>
 
-<p><img border="0" src="http://mission-rnd.github.io/assets/images/android-intro-echo.png" /></p>
+<p pbzloc="126"><img border="0" src="http://mission-rnd.github.io/assets/images/android-intro-echo.png" /></p>
 
-<h3 id="ContactActivity">Contact App</h3>
+<h3 id="ContactActivity" pbzloc="58">Contact App</h3>
 
-<p>You will build a contact form app as shown below for this step.</p>
+<p pbzloc="59">You will build a contact form app as shown below for this step.</p>
+
+<p pbzloc="62">&nbsp;</p>
+
+<p pbzloc="61"><img border="0" src="http://mission-rnd.github.io/assets/images/android-intro-contactform.png" /></p>
 
 <p>&nbsp;</p>
 
-<p><img border="0" src="http://mission-rnd.github.io/assets/images/android-intro-contactform.png" /></p>
-
-<p>&nbsp;</p>
-
-<h3 id="AppointmentActivity" pbzloc="19">Appointment App</h3>
+<h3 id="AppointmentActivity" pbzloc="120">Appointment App</h3>
 
 <p>&nbsp;You will build an appointment taking app with the following screen. You app will have a DatePicker widget, TimePicker widget and a submit button that the user clicks after selecting date/time. You will have to show the selected date time in the dateTimeResults textview widget in the specified format (Example: &quot;<span style="font-weight: bold; color: #008000">Your appointment is confirmed for: 11-October-2016&nbsp;11:30 AM&quot; )</span></p>
 
 <p><span style="font-weight: bold; color: #008000"><img border="0" src="http://mission-rnd.github.io/assets/images/android-intro-datetime.png" /></span></p>
 
+<p pbzloc="121">&nbsp;</p>
+
+<p pbzloc="122">&nbsp;</p>
+
 <p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p pbzloc="123">&nbsp;</p>
 
 <p>&nbsp;</p>
 
@@ -155,22 +235,8 @@ Pre Requisites</h2>
 
 <p>&nbsp;</p>
 
-<p>&nbsp;</p>
+<p pbzloc="124">&nbsp;</p>
 
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+<p pbzloc="125">&nbsp;</p>
 </body>
 </html>
