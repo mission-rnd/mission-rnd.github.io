@@ -6,7 +6,7 @@
 	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
 </head>
 <body bgcolor="#ffffff">
-<h1 pbzloc="39" style="margin-left: 216pt">NodeJS Introduction &ndash; NodeJS 101</h1>
+<h1 style="margin-left: 216pt">NodeJS Introduction &ndash; NodeJS 101</h1>
 
 <p>&nbsp;</p>
 
@@ -22,7 +22,7 @@
 
 <h1>Project Concepts</h1>
 
-<h2 pbzloc="47">&nbsp;</h2>
+<h2>&nbsp;</h2>
 
 <h2>What is nodeJS</h2>
 
@@ -58,7 +58,7 @@
 
 <p><img border="0" src="http://mission-rnd.github.io/assets/images/contactfile.png" /></p>
 
-<p pbzloc="46">&nbsp;</p>
+<p>&nbsp;</p>
 
 <p>So, to write a contact to the file, we can take any of the following approaches:</p>
 
@@ -78,16 +78,16 @@
 	</tbody>
 </table>
 
-<p pbzloc="45">What if we only want to write only the new contact to file? To be able to do this, we need to know where in the file one contact record starts and where it ends.</p>
+<p>What if we only want to write only the new contact to file? To be able to do this, we need to know where in the file one contact record starts and where it ends.</p>
 
-<p pbzloc="44">There are many ways of doing this including:</p>
+<p>There are many ways of doing this including:</p>
 
 <ol>
-	<li pbzloc="43">With each contact record, store its total length in terms of bytes, OR</li>
-	<li pbzloc="42">OR, put a delimiter at the end of each record</li>
+	<li>With each contact record, store its total length in terms of bytes, OR</li>
+	<li>OR, put a delimiter at the end of each record</li>
 </ol>
 
-<p pbzloc="41">Code for approach 2 would look as follows (assumes . is the delimiter, but it can be any other character such as !)</p>
+<p>Code for approach 2 would look as follows (assumes . is the delimiter, but it can be any other character such as !)</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -127,7 +127,7 @@
 
 <h2>Synchronous vs Async APIs</h2>
 
-<p pbzloc="48">nodejs provides both Sync and Async versions of the fs APIs. The Sync APIs are less performant since they block the thread while waiting for the disk i/o to complete. For this activity, we will use the Sync APIs. Later projects will introduce you to the async APIs.</p>
+<p>nodejs provides both Sync and Async versions of the fs APIs. The Sync APIs are less performant since they block the thread while waiting for the disk i/o to complete. For this activity, we will use the Sync APIs. Later projects will introduce you to the async APIs.</p>
 
 <h1>Project Setup</h1>
 
@@ -179,7 +179,7 @@
 
 <h1>Tutorial</h1>
 
-<p pbzloc="49">In this tutorial, we will show how to read and write to a file in node.JS. First, you&rsquo;ve to import or include the fs module of node.JS. This can be done using the require statement as shown below.</p>
+<p>In this tutorial, we will show how to read and write to a file in node.JS. First, you&rsquo;ve to import or include the fs module of node.JS. This can be done using the require statement as shown below.</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>
@@ -191,7 +191,7 @@
 	</tbody>
 </table>
 
-<p pbzloc="50">&nbsp;</p>
+<p>&nbsp;</p>
 
 <p>Next, we can call the writeFileSync API to write the data to a file.</p>
 
@@ -215,7 +215,7 @@
 
 <p>&nbsp;</p>
 
-<p pbzloc="51">Now, read the contents of the file back and print it to the console.</p>
+<p>Now, read the contents of the file back and print it to the console.</p>
 
 <table border="1" cellpadding="0" cellspacing="0">
 	<tbody>

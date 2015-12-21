@@ -6,7 +6,7 @@
 	<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
 </head>
 <body bgcolor="#ffffff">
-<h1 align="center" pbzloc="0">Android List View</h1>
+<h1 align="center" pbzloc="84">Android ListView</h1>
 
 <h1 align="left" id="Overview">Overview</h1>
 
@@ -15,23 +15,221 @@
 <h1 align="left"><br />
 Pre Requisites</h1>
 
-<p align="left">Android Introductoin</p>
+<p align="left">Finish the <a class="0" href="android_intro.htm">Android Intro </a>project before trying this project.</p>
 
 <h1 align="left" id="Concepts">Concepts</h1>
 
-<p align="left">Explain the basic concepts</p>
+<p align="left">In this section, we will explain how a ListView works in&nbsp;Android, ListView is a widget that is used to show collections of objects (eg: List of contacts or list of countries etc). ListView is a container widget. For each item in the list, the ListView widget will contain another View that represents the item to be shown. This item view can be made up of regular widgets such as textview, imageview, buttons etc.</p>
 
-<p align="left">&nbsp;</p>
+<p align="left"><img border="0" height="573" src="images/android-list-concepts1.png" width="904" /></p>
+
+<p align="left">Following is the approximate flow sequence for a listview to work:</p>
+
+<ol>
+	<li align="left">Define an activity and place a listview in the activity&#39;s layout file.</li>
+	<li align="left">Define another layout file that holds the layout for the items that will be shown inside the list. This is what we refer to as the item layout xml file in the above diagram.</li>
+	<li align="left">Override the ArrayAdapter class (or any other adapter class) and provide your implementation for GetView() method. This method will return the View object for each item in the listview. The View returned by this method will match the layout defined in the item layout xml.</li>
+	<li align="left">Create an instance of your adapter class - You need to pass the id of the item layout xml file as well as the id of a textview widget contained in the item layout as arguments to the constructor of the adapter class.</li>
+	<li align="left">Call setAdapter on the listview to bind the listview to your adapter instance.</li>
+</ol>
+
+<p>The <a id="#Tutorial" name="Tutorial">Tutorial</a>&nbsp;section will walk you through an example.</p>
+
+<h2>ListView Performance</h2>
+
+<p>Since lists can show thousands of data items, it is important to understand performance aspects of listview.</p>
+
+<ul>
+	<li pbzloc="85">Pagination, Continuous Scrolling - It is always a good idea to provide a pagination/continuous scrolling approach where only the data needed to be shown is fetched/loaded (instead of fetching and showing the entire data set). The pagination project activity will walk you through this exercise.</li>
+	<li pbzloc="96">Handle Row View Recycling - When a user scrolls through a list of items, android will reuse an existing row of the listview to show new data (ie it wont allocate new rows as new items are shown). This is described in more detail on <a href="https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView">codepath&#39;s github page</a>&nbsp;and at <a href="http://software-workshop.eu/content/android-listview-performance-optimalisation-and-view-reuse">software-workshop&#39;s blog</a>.&nbsp; If the <span style="color: #ff0000"><strong>convertView </strong></span>parameter is null, then a new View needs to be called by calling inflater.Inflate(). If the <span style="color: #ff0000"><strong pbzloc="95">convertView </strong></span>parameter in the call to getView is not null, then it is a view that is being recycled. You need to ensure all the properties on this reused view are set correctly to match the new data that is being bound to that view.&nbsp; Android source code for ArrayAdapter.getView() shows this approach nicely as shown in the snippet below:</li>
+</ul>
+
+<p><textarea cols="1" name="arrayAdapter.getView()" rows="10" style="height: 634px; width: 1255px">    public View getView(int position, View convertView, ViewGroup parent) {
+        return createViewFromResource(mInflater, position, convertView, parent, mResource);
+    }
+
+    private View createViewFromResource(LayoutInflater inflater, int position, View convertView,
+            ViewGroup parent, int resource) {
+        View view;
+        TextView text;
+
+        if (convertView == null) {
+            view = inflater.inflate(resource, parent, false);
+        } else {
+            view = convertView;
+        }
+
+        try {
+            if (mFieldId == 0) {
+                //  If no custom field is assigned, assume the whole resource is a TextView
+                text = (TextView) view;
+            } else {
+                //  Otherwise, find the TextView field within the layout
+                text = (TextView) view.findViewById(mFieldId);
+            }
+        } catch (ClassCastException e) {
+            Log.e(&quot;ArrayAdapter&quot;, &quot;You must supply a resource ID for a TextView&quot;);
+            throw new IllegalStateException(
+                    &quot;ArrayAdapter requires the resource ID to be a TextView&quot;, e);
+        }
+
+        T item = getItem(position);
+        if (item instanceof CharSequence) {
+            text.setText((CharSequence)item);
+        } else {
+            text.setText(item.toString());
+        }
+
+        return view;
+    }
+</textarea></p>
+
+<p>&nbsp;</p>
+
+<ul pbzloc="125">
+	<li pbzloc="127"><a href="http://developer.android.com/training/improving-layouts/smooth-scrolling.html" pbzloc="126">ViewHolder Pattern </a>- Instead of calling findViewById for every row in the listview, you can cache the view definitions. See the <a href="http://developer.android.com/training/improving-layouts/smooth-scrolling.html" pbzloc="119">ViewHolder pattern </a>for more details.</li>
+	<li pbzloc="115"><a href="http://developer.android.com/training/improving-layouts/smooth-scrolling.html" pbzloc="106">Use Background threads </a>for processing (fetching data, images etc) - This will free up the main UI thread for a smoother scrolling experience. See this <a href="http://developer.android.com/training/improving-layouts/smooth-scrolling.html" pbzloc="99">android developer documentation</a> for more details.</li>
+	<li pbzloc="132"><a href="http://developer.android.com/reference/android/widget/AbsListView.RecyclerListener.html" pbzloc="128">Implement RecyclerListener</a> to free up resources when a view is put on scrap heap - During scrolling, when a view is no longer visible, it is recycled into a scrap heap. It can then be reused to display a new item (passed as convertView parameter in the call to getView). If the view is holding expensive resources (such as images), you can implement <a href="http://developer.android.com/reference/android/widget/AbsListView.RecyclerListener.html" pbzloc="109">RecyclerListener</a> to perform cleanup action when the view is recycled. This is explained in more detail at <a href="http://www.chess-ix.com/blog/listviews-in-android/">chess-ix blog</a>&nbsp;and at <a href="https://sriramramani.wordpress.com/2012/07/22/recycling-listview-rows/">Sriram Ramani&#39;s blog</a>. In the tutorial below, the activity implements <a href="http://developer.android.com/reference/android/widget/AbsListView.RecyclerListener.html">RecyclerListener</a> to free up image resources.</li>
+</ul>
+
+<p align="left" pbzloc="131">&nbsp;</p>
 
 <h1 align="left" id="Setup">Setup</h1>
 
 <p align="left">Follow the <a href="Getting_Started_on_Android_Projects.htm">Getting Started on Android document </a>to get your environment up and running for developing Android apps</p>
 
-<h1 align="left"><br />
+<h1 align="left" id="Tutorial"><br />
 Tutorial</h1>
 
-<p align="left"><br />
-A follow-along tutorial that walks the students thru&#39; a simple activity of the project.</p>
+<p align="left">&nbsp;Lets walk through an example. Suppose you want to show a list of contacts. Each contact will have the name and an image shown.</p>
+
+<p align="left"><img border="0" src="images/android-list-imageview.png" /></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left">For simplicity, we are just showing a Star image next to each contact name, but you can easily extend the example to show a contact&#39;s photo for example. The following are the various components needed to build the above android app:</p>
+
+<ul>
+	<li align="left">Define an activity for the listview. Place only the listview widget in the activity&#39;s layout file. You can look at<a href="https://github.com/mission-rnd/android-lists/blob/master/app/src/main/res/layout/activity_image_view_tutorial.xml"> activity_image_view_tutorial.xml </a>file of the project that is shown below</li>
+</ul>
+
+<p><textarea cols="1" name="activity_image_view_tutorial.xml" rows="8" style="height: 259px; width: 1028px">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot; android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot; android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+    tools:context=&quot;com.example.listview.ImageViewTutorialActivity&quot;&gt;
+
+    &lt;ListView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/tutorialListView&quot;
+        android:layout_alignParentTop=&quot;true&quot;
+        android:layout_centerHorizontal=&quot;true&quot;
+        android:layout_marginTop=&quot;102dp&quot; /&gt;
+&lt;/RelativeLayout&gt;
+</textarea></p>
+
+<p>&nbsp;</p>
+
+<ul>
+	<li align="left">Now, define a layout XML file for the items in the list view:&nbsp; Since we want to show contact name (Text) and an image for each item, you can create a new layout file (In Android Studio: New -&gt; XML -&gt; Layout XML File) and place&nbsp; TextView and ImageView widgets in the layout file. You can look at &nbsp;<a href="https://github.com/mission-rnd/android-lists/blob/master/app/src/main/res/layout/imageview_tutorial_layout.xml">imageview_tutorial_layout file </a>which is&nbsp;shown in the snippet below.</li>
+</ul>
+
+<p align="left"><textarea cols="1" name="layoutxml" rows="15" style="height: 253px; width: 734px">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;match_parent&quot;
+    android:weightSum=&quot;1&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;New Text&quot;
+        android:id=&quot;@+id/tutorialTextView&quot;
+        android:layout_weight=&quot;0.38&quot; /&gt;
+
+    &lt;ImageView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/tutorialImageView&quot;
+        android:layout_weight=&quot;0.38&quot;
+        android:layout_toLeftOf=&quot;@+id/tutorialTextView&quot;  /&gt;
+
+&lt;/LinearLayout&gt;
+</textarea></p>
+
+<ul>
+	<li>Next, provide an implementation of an ArrayAdapter that overrides the default GetView() implementation and returns the above View (comprising of TextView and ImageView widgets) for every row in the list. You can either override the GetView method inline or create a new custom adapter subclass as shown in the <a href="https://github.com/mission-rnd/android-lists/blob/master/app/src/main/java/com/example/listview/ImageViewTutorialActivity.java">ImageViewTutorialActivity.java</a> file</li>
+</ul>
+
+<p><textarea cols="1" name="customAdapter" rows="10" style="height: 418px; width: 1148px">class CustomAdapter extends ArrayAdapter&lt;Contact&gt; {
+            public CustomAdapter(Context context, int resource, int textViewId, Contact[] contacts) {
+                super(context, resource, textViewId, contacts);
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                Contact contact = (Contact) super.getItem(position);
+
+                View view = super.getView(position, convertView, parent);
+
+                TextView text1 = (TextView) view.findViewById(R.id.tutorialTextView);
+                ImageView img = (ImageView) view.findViewById(R.id.tutorialImageView);
+
+                //BasicNameValuePair data = list.get(position);
+
+                text1.setText(contact.FullName);
+                img.setImageResource(android.R.drawable.btn_star);
+                return view;
+            }
+
+        }
+CustomAdapter adapter = new CustomAdapter(this,R.layout.imageview_tutorial_layout , R.id.tutorialTextView, SampleContacts.contacts);
+</textarea></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left"><textarea cols="1" name="inlineOverride" rows="20" style="height: 326px; width: 1152px">final ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter(this,
+                R.layout.imageview_tutorial_layout, R.id.tutorialTextView, SampleContacts.contacts) {
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                Contact contact = (Contact) super.getItem(position);
+
+                View view = super.getView(position, convertView, parent);
+
+                TextView text1 = (TextView) view.findViewById(R.id.tutorialTextView);
+                ImageView img = (ImageView) view.findViewById(R.id.tutorialImageView);
+
+                //BasicNameValuePair data = list.get(position);
+
+                text1.setText(contact.FullName);
+                img.setImageResource(android.R.drawable.btn_star);
+                return view;
+            }</textarea></p>
+
+<p align="left" pbzloc="98">In both implementations, we call the super.getView() method to get the View associated with the adapter and let the base ArrayAdapter handle inflating the view/handle view recycling. The code expects this to be a view with 2 widgets (TextView and ImageView). We set the value of TextView to hold the contact&#39;s FullName. The code sets the ImageView to the btn_star image resource to show a star image next to the contact.</p>
+
+<ul>
+	<li align="left">Notice that in the constructor for ArrayAdapter/CustomAdapter, the code is passing the name of the layout view to be used for each item (R.layout.imageview_tutorial_layout) and the id of a textview widget in that layout (R.id.tutorialTextView)</li>
+	<li align="left">Now,&nbsp; set the listview&#39;s adapter through a call to: listview.setAdapter(adapter);</li>
+	<li align="left">To free up the image when views are recycled, implement RecycleListener callback as shown below</li>
+</ul>
+
+<p><textarea cols="1" name="recycleListener" rows="10" style="height: 166px; width: 969px">        listview.setRecyclerListener(new AbsListView.RecyclerListener() {
+            @Override
+            public void onMovedToScrapHeap(View view) {
+                ImageView img = (ImageView) view.findViewById(R.id.tutorialImageView);
+                img.setImageDrawable(null);
+            }
+        });
+</textarea></p>
+
+<p align="left">You can run the ImageViewTutorialActivity in Android Studio to try out the tutorial yourself.</p>
 
 <h1 align="left" id="Activities">Project Activities<br />
 &nbsp;</h1>
@@ -46,55 +244,55 @@ A follow-along tutorial that walks the students thru&#39; a simple activity of t
 
 <p>&nbsp;</p>
 
-<h2 pbzloc="1">&nbsp;2 Item List Views</h2>
+<h2>&nbsp;2 Item List Views</h2>
 
-<p pbzloc="2">In this project, you will build an app that shows 2 items (fullname and company) for every row in the list. An example screenshot is shown below.</p>
+<p>In this project, you will build an app that shows 2 items (fullname and company) for every row in the list. An example screenshot is shown below.</p>
 
-<p pbzloc="5"><img border="0" src="images/android-list-contacts-2item.png" /></p>
+<p><img border="0" src="images/android-list-contacts-2item.png" /></p>
 
-<h2 pbzloc="3">&nbsp;Sorting in ListViews</h2>
+<h2>&nbsp;Sorting in ListViews</h2>
 
-<p pbzloc="5">In ths project, you will enahnce the contact list app built in the previous step by adding 2 buttons to sort the list in ascending/descending order as shown below.</p>
+<p>In ths project, you will enahnce the contact list app built in the previous step by adding 2 buttons to sort the list in ascending/descending order as shown below.</p>
 
-<p pbzloc="8"><img border="0" src="images/android-list-sorting.png" /></p>
+<p><img border="0" src="images/android-list-sorting.png" /></p>
 
-<p pbzloc="13">&nbsp;</p>
+<p>&nbsp;</p>
 
-<p pbzloc="15">onClick of ascendingButton, you need to implement an onClickListener that will sort the contacts by FullName in ascending order as shown below.</p>
+<p>onClick of ascendingButton, you need to implement an onClickListener that will sort the contacts by FullName in ascending order as shown below.</p>
 
-<p pbzloc="18"><img border="0" src="images/android-list-sorting-asc.png" /></p>
+<p><img border="0" src="images/android-list-sorting-asc.png" /></p>
 
-<p pbzloc="24">Similarly, onClick of descendingButton, sort and display the contacts list in descending order by FullName as shown below.</p>
+<p>Similarly, onClick of descendingButton, sort and display the contacts list in descending order by FullName as shown below.</p>
 
-<p pbzloc="27"><img border="0" src="images/android-list-sorting-desc.png" /></p>
+<p><img border="0" src="images/android-list-sorting-desc.png" /></p>
 
-<h2 pbzloc="6">Pagination</h2>
+<h2>Pagination</h2>
 
-<p pbzloc="7">When you have to deal with large amounts of data, a typical practice is to show a small number of items per page and provide a Next button to fetch more data. This approach is called pagination. In this project, you will implement pagination on a listview and display a list of countries.</p>
+<p>When you have to deal with large amounts of data, a typical practice is to show a small number of items per page and provide a Next button to fetch more data. This approach is called pagination. In this project, you will implement pagination on a listview and display a list of countries.</p>
 
-<p pbzloc="9">A file containing country names is located at app\src\main\assets\countriesoftheworld.txt file. It contains 13 country names.</p>
+<p>A file containing country names is located at app\src\main\assets\countriesoftheworld.txt file. It contains 13 country names.</p>
 
-<p pbzloc="10">You have to build an app that shows a list view of 5 countries at a time as shown below.</p>
+<p>You have to build an app that shows a list view of 5 countries at a time as shown below.</p>
 
-<p pbzloc="17"><img border="0" src="images/android-list-pagination-1.png" /></p>
+<p><img border="0" src="images/android-list-pagination-1.png" /></p>
 
-<p pbzloc="4">&nbsp;</p>
+<p>&nbsp;</p>
 
-<p pbzloc="14">&nbsp;on click of the Next button, the app will fetch the next 5 countries and display them as shown below</p>
+<p>&nbsp;on click of the Next button, the app will fetch the next 5 countries and display them as shown below</p>
 
-<p pbzloc="23"><img border="0" src="images/android-list-pagination-2.png" /></p>
+<p><img border="0" src="images/android-list-pagination-2.png" /></p>
 
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
-<p pbzloc="20">&nbsp;When the last page is reached, the next button should be disabled as shown below.</p>
+<p>&nbsp;When the last page is reached, the next button should be disabled as shown below.</p>
 
-<p pbzloc="25"><img border="0" src="images/android-list-pagination-3.png" /></p>
+<p><img border="0" src="images/android-list-pagination-3.png" /></p>
 
 <p>&nbsp;</p>
 
-<p pbzloc="26">&nbsp;</p>
+<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
