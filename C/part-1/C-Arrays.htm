@@ -1,66 +1,67 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
-
 <head>
-  <title>C-Arrays</title>
-  <meta content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)" name="GENERATOR" />
-  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+  <script src="./../../assets/js/codemirror.js"></script>
+  <link rel="stylesheet" href="./../../assets/css/codemirror.css">
+  <script src="./../../assets/js/clike.js"></script>
+
+  <script src="./../../assets/js/matchbrackets.js"></script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+<body class="container">
 
-<body bgcolor="#ffffff">
-  <h1 align="center">C-Arrays</h1>
+  <div> <h2> C-Arrays-1</h2></div>
+  <p><b>Each Project will have Reference Links which you can read to get a quick grasp on the topic and some Practice Questions,If you want more practice for each Topic .</b>
+  </p>
+  <p>Each Practice Question is slightly abstracted ,You need to make certain assumptions and write the best solution .Think for the best complexity algorithms .Remember also Space vs Time Tradeoff </p>
+  <h4>Reference Links : </h4>
+  <ul>
+    <li>http://www.thegeekstuff.com/2011/12/c-arrays/</li>
+    <li>http://www.tutorialspoint.com/cprogramming/c_arrays.htm</li>
+    <li>http://www.studytonight.com/c/arrays-in-c.php</li>
+    <li><b>Again 100% C Course Completion is mandatory for Getting considered for Summer Program</b></li>
+  </ul>
 
-  <h1 align="left" id="Overview">Overview</h1>
+  <h4>Practice Questions : </h4>
+  <ul>
+    <li>Find the maximum and minimum element in an unsorted array ?</li>
+    <li>Given an unsorted array of numbers ranging from 1 to 500 .Now one element in the array is changed to 0 ,Find that element ?</li>
+    <li>Given two arrays of N numbers in the Range -10000 to 10000, Find the common elements of both Arrays ?</li>
+    <li>Given an array of N unique numbers except 1,Find that number ?</li>
+    <li>Given an array of N numbers ,Find All Triplets whose sum equal to a integer K ? {0,2,3,4,5,6} and K=10 ,gives output as {5,3,2} ,{6,3,1} ,{0,4,6} .Dont print All permutations of same Triplet like {0,4,6} ,{6,4,0 } etc .Print any 1 .</li>
+    <li>Given an array of N numbers ,Find its L.C.M and G.C.D?</li>
+    <li><b>Again 100% C Course Completion is mandatory for Getting considered for Summer Program</b></li>
+  </ul>
+  <h5>C Quiz : Find what the below functions Do ?</h5>
+<textarea id='problem1' name='problem1' rows='10' cols='80'>
+int function1(int k)
+{
+    unsigned int x = 0;
+    while (k)
+    {
+      k &= (k-1) ;
+      x++;
+    }
+    return x;
+}
+</textarea>
 
-  <p>Arrays problems.</p>
+<script type="text/javascript">
 
-  <!-- <h1 align="left"><br />
-Pre Requisites</h1>
+  var cEditor = CodeMirror.fromTextArea(document.getElementById("problem1"), {
+    matchBrackets: true,
+    readOnly: "nocursor",
+    startStyle:"user-select: none",
+    mode: "text/x-csrc",
+    dragDrop:false
+  });
 
-<p align="left">Other projects that are pre reqs before taking this up.</p>
-
-<h1 align="left" id="Concepts">Concepts</h1>
-
-<p align="left">Explain the basic concepts</p>
-
-<p align="left">&nbsp;</p>
-
-<h1 align="left" id="Setup">Setup</h1>
-
-<p align="left">Instructions for setting up all the software and tools needed for the project</p>
-
-<h1 align="left"><br />
-Tutorial</h1>
-
-<p align="left"><br />
-A follow-along tutorial that walks the students thru&#39; a simple activity of the project.</p>
- -->
-  <h1 align="left" id="Activities">Project Activities<br />
-&nbsp;</h1>
-
-  <h2>studentsCount</h2>
-
-  <p>Write a function that takes ascending sorted student's score array and tells how many number of students got more marks and how many students got less marks than the given student.</p>
-
-  <h2>sortedArrayInsertNumber</h2>
-
-  <p>Given a sorted array, insert a given number into the array at appropriate position.</p>
-
-  <h2>sortedArrayPositionsChange</h2>
-
-  <p>In a given ascending sorted array, two numbers are changed their position, please fix those two numbers.</p>
-
-  <h2>scoresDescendingSort</h2>
-
-  <p>You are given scores for students of a class in alphabetical order. Write a function that sorts these scores in descending order.</p>
-
-  <h2>removeArrayDuplicates</h2>
-
-  <p>given an array that has duplicate values remove all duplicate values.</p>
-
-  <h2>topKStudents</h2>
-
-  <p>You are given scores for students of a class in alphabetical order. Write a function that returns the names and scores of top K students.</p>
+  //cEditor.setSize(800,400);
+</script>
 </body>
-
 </html>
