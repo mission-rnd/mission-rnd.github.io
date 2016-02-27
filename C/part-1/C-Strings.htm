@@ -1,63 +1,138 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
-
 <head>
-  <title>C-Strings</title>
-  <meta content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)" name="GENERATOR" />
-  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+  <script src="./../../assets/js/codemirror.js"></script>
+  <link rel="stylesheet" href="./../../assets/css/codemirror.css">
+  <script src="./../../assets/js/clike.js"></script>
+
+  <script src="./../../assets/js/matchbrackets.js"></script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+<body class="container">
 
-<body bgcolor="#ffffff">
-  <h1 align="center">C-Strings</h1>
+  <div> <h2> C-Strings-1</h2></div>
+  <p><b>Each Project will have Reference Links which you can read to get a quick grasp on the topic and some Practice Questions,If you want more practice for each Topic .</b>
+  </p>
+  <p>Each Practice Question is slightly abstracted ,You need to make certain assumptions and write the best solution .Think for the best complexity algorithms .Remember also Space vs Time Tradeoff </p>
+  <h4>Reference Links : (Right Click is disabled ,So Ctrl+C and Ctrl+V the links</h4>
+  <ul>
+    <li>http://www.tutorialspoint.com/cprogramming/c_strings.htm</li>
+    <li>https://www.eskimo.com/~scs/cclass/notes/sx8.html</li>
+    <li>https://www.youtube.com/watch?v=Bf8a6IC1dE8</li>
+  </ul>
 
-  <h1 align="left" id="Overview">Overview</h1>
+  <h4>Practice Questions : </h4>
+  <ul>
+    <li>Implement your own versions of strlen,strcat,strcmp,strstr,strrev .</li>
+    <li>Find which character appeared maximum number of times in a String .</li>
+    <li>Given a String , convert it into a integer ?</li>
+    <li>Given a hexadecimal String ,Convert it into octal string ? Vice versa too .</li>
+    <li>Given a alphabatically sorted string , and two letters are interchanged .Find those letters and fix it .</li>
+    <li>Given two strings as input which are madeup of digits, find which string is greater ("123">"56")? (Dont convert it into integer and compare .)</li>
+    <li>Find two strings are anagrams are not in O(n) ?</li>
+    
+  </ul>
+  <h4>How to write good code :</h4>
+  
+  <ul>
+  <li>Name all variables in a meaningfull way </li>
+  <li>Use functions to seperate out the independent tasks</li>
+  <li>Write good modular code ,and dont over complicate functions with lots of lines .</li>
+  <li>Dont over optimize your solutions which results in unreadable code .</li>
+  <li>Use comments for lines ,which you feel needs an explanation .</li>
+  <li>Always code-review your own code and Refactor whenever possible .</li>
+  </ul>
+  <h4>C Strings Code Sample </h4>
+  <p>Program to convert all letters in a String from lowecase to UpperCase ,and uppercase to lowercase .</p>
 
-  <p>Strings problems.</p>
+<h5><b>Bad Code</b></h5>  
+<textarea id='problem1' name='problem1' rows='10' cols='80'>
+void convertstr_badway(char *str){
 
-  <!-- <h1 align="left"><br />
-Pre Requisites</h1>
+    int i=0;
+    for(i=0;str[i]!='\0';i++){
+        if(str[i]>=65 && str[i]<=90){
+            str[i]+=32;
+        }
+        else{
+            str[i]-=32;
+        }
+    }
 
-<p align="left">Other projects that are pre reqs before taking this up.</p>
+}
+</textarea>
 
-<h1 align="left" id="Concepts">Concepts</h1>
+<h5><b>Good Readable Code</b></h5>  
+<textarea id='problem2' name='problem2' rows='10' cols='80'>
 
-<p align="left">Explain the basic concepts</p>
+int isLower(char letter){
+    if(letter >= 'a' && letter <= 'z'){
+        return 1;
+    }
+    return 0;
+}
 
-<p align="left">&nbsp;</p>
+int isUpper(char letter){
+    if(letter >= 'A' && letter <= 'Z'){
+        return 1;
+    }
+    return 0;
+}
 
-<h1 align="left" id="Setup">Setup</h1>
+int getLower(char letter){
+    return letter+('a'-'A');
+}
 
-<p align="left">Instructions for setting up all the software and tools needed for the project</p>
+int getUpper(char letter){
+    return letter-('a'-'A');
+}
 
-<h1 align="left"><br />
-Tutorial</h1>
+void convert_str_goodway(char *str){
 
-<p align="left"><br />
-A follow-along tutorial that walks the students thru&#39; a simple activity of the project.</p>
- -->
-  <h1 align="left" id="Activities">Project Activities<br />
-&nbsp;</h1>
+    if(str==NULL){
+        return;
+    }
 
-  <h2>NumbertoStr</h2>
+    int index=0;
 
-  <p>Given a float number, Convert it into a string.</p>
+    for(index=0;str[index]!=NULL;index++){
 
-  <h2>KthIndexFromEnd</h2>
+        char letter=str[index];
+        if(isLower(letter)){
+            str[index]=getUpper(letter);
+        }
+        else if(isUpper(letter)){
+            str[index]=getLower(letter);
+        }
+        else{
+            //Leave punctuations and spaces as it is
+        }
+    }
+}
+</textarea>
+<script type="text/javascript">
 
-  <p>Given a string, return the Kth index from the end of the string.</p>
+  var cEditor = CodeMirror.fromTextArea(document.getElementById("problem1"), {
+    matchBrackets: true,
+    readOnly: "nocursor",
+    startStyle:"user-select: none",
+    mode: "text/x-csrc",
+    dragDrop:false
+  });
 
-  <h2>StrWordsinRev</h2>
-
-  <p>Given a string, reverse all the words not the string.</p>
-
-  <h2>removeSpaces</h2>
-
-  <p>Given a string, remove all spaces in it.</p>
-
-  <h2>commonWords</h2>
-
-  <p>Given two strings, find the words that are common to both the strings.</p>
-
+  var cEditor2 = CodeMirror.fromTextArea(document.getElementById("problem2"), {
+    matchBrackets: true,
+    readOnly: "nocursor",
+    startStyle:"user-select: none",
+    mode: "text/x-csrc",
+    dragDrop:false
+  });
+  
+</script>
 </body>
-
 </html>
