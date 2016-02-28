@@ -24,55 +24,65 @@
 
   <h4>Reference Links : (Right Click is disabled ,So Ctrl+C and Ctrl+V the links)</h4>
   <ul>
-    <li><a href="https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P"> Watch Videos 1-9 </a></li>
-    <li><a href="http://www.thelearningpoint.net/computer-science/data-structures-singly-linked-list-with-c-program-source-code">Link 2</a></li>
-    <li><a href="http://www.tutorialspoint.com/data_structures_algorithms/linked_lists_algorithm.htm">Basic Explanation </a></li>
+    <li>https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P</li>
+    <li>http://www.thelearningpoint.net/computer-science/data-structures-singly-linked-list-with-c-program-source-code</li>
+    <li>http://www.tutorialspoint.com/data_structures_algorithms/linked_lists_algorithm.htm</li>
   </ul>
 
   <h4>Practice Questions : </h4>
   <ul>
-    <li>Implement your own versions of strlen,strcat,strcmp,strstr,strrev .</li>
-    <li>Find which character appeared maximum number of times in a String .</li>
-    <li>Given a String , convert it into a integer ?</li>
-    <li>Given a hexadecimal String ,Convert it into octal string ? Vice versa too .</li>
-    <li>Given a alphabatically sorted string , and two letters are interchanged .Find those letters and fix it .</li>
-    <li>Given two strings as input which are madeup of digits, find which string is greater ("123">"56")? (Dont convert it into integer and compare .)</li>
-    <li>Find two strings are anagrams are not in O(n) ?</li>
     
+    <li>Find the Length of the SLL.</li>
+    <li>Write functions for Insert and Delete nodes at a specific Index .</li>
+    <li>Delete every other node in an SLL.</li>
+    <li>Write a insert function ,which Inserts the nodes in a sorted way ,ie If 2 is inserted into a SLL already having 1->10 .Now after insert SLL becomes 1->2->10</li>
+    <li>Given an Sll , Swap every two nodes using pointers ,Ex:abcd -> badc .</li>
+    <li>Given a SLL ,Remove every Sll node which has greater valuen to its imediate right ?Ex :I/P:5->7->3->6->2->5 ,O/P: 7->6->5 ,A sorted SLL finally should have only 1 element .</li>
+    <li>Given an SLL which is a representation of a number ,Ex:: 1->2->1->NULL .Find out whether the number formed from SLL,is divisible by 11 or not .Dont convert it into an integer</li>
   </ul>
-  <h4>How to write good code :</h4>
-  
-  <ul>
-  <li>Name all variables in a meaningfull way </li>
-  <li>Use functions to seperate out the independent tasks</li>
-  <li>Write good modular code ,and dont over complicate functions with lots of lines .</li>
-  <li>Dont over optimize your solutions which results in unreadable code .</li>
-  <li>Use comments for lines ,which you feel needs an explanation .</li>
-  <li>Always code-review your own code and Refactor whenever possible .</li>
-  </ul>
-  <h4>C Strings Code Sample </h4>
-  <p>Program to convert all letters in a String from lowecase to UpperCase ,and uppercase to lowercase .</p>
 
-<h5><b>Bad Code</b></h5>  
+<h5>Sample Insert_node_at_end function</h5>
 <textarea id='problem1' name='problem1' rows='10' cols='80'>
 
+int insert_at_end(struct node **head,int data){
+  //Inserts a new node of data , and returns Length ,-1 if any error occurs .
+
+    struct node *new_node = (struct node*)malloc(sizeof(struct node));
+
+    if(new_node == NULL)
+    {
+        return -1;
+    }
+
+    new_node->data=new_data;
+    new_node->next=NULL;
+
+    //First Node insertion
+    if(*head == NULL)
+    {
+        *head=new_node;
+        return 1;
+    }
+    else
+    {
+
+        struct node *cur = *head;
+        int len=1;
+        while (cur->next != NULL)
+        {
+            cur=cur->next;
+            len++;
+        };
+        cur->next=new_node;
+        len++;
+        return len;
+    }
+}
 </textarea>
 
-<h5><b>Good Readable Code</b></h5>  
-<textarea id='problem2' name='problem2' rows='10' cols='80'>
-
-</textarea>
 <script type="text/javascript">
 
   var cEditor = CodeMirror.fromTextArea(document.getElementById("problem1"), {
-    matchBrackets: true,
-    readOnly: "nocursor",
-    startStyle:"user-select: none",
-    mode: "text/x-csrc",
-    dragDrop:false
-  });
-
-  var cEditor2 = CodeMirror.fromTextArea(document.getElementById("problem2"), {
     matchBrackets: true,
     readOnly: "nocursor",
     startStyle:"user-select: none",
