@@ -1,63 +1,85 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
-
 <head>
-  <title>C-LinkedLists</title>
-  <meta content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)" name="GENERATOR" />
-  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+  <script src="./../../assets/js/codemirror.js"></script>
+  <link rel="stylesheet" href="./../../assets/css/codemirror.css">
+  <script src="./../../assets/js/clike.js"></script>
+
+  <script src="./../../assets/js/matchbrackets.js"></script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+<body class="container">
 
-<body bgcolor="#ffffff">
-  <h1 align="center">C-LinkedLists</h1>
+  <div> <h2> C-Linked Lists 1</h2></div>
+  <p><b>Each Project will have Reference Links which you can read to get a quick grasp on the topic and some Practice Questions,If you want more practice for each Topic .</b>
+  </p>
+  <p>Each Practice Question is slightly abstracted ,You need to make certain assumptions and write the best solution .Think for the best complexity algorithms .Remember also Space vs Time Tradeoff </p>
+  <p>Do not copy the Answers from Internet ,or from your friends as that will lead to your disqualification ,We will run copychecker tools ,and do a manual review too.So even changing variable names or changing for loops to while loops still leads to detection.</p>
+  <p>You are in the course for learning ,So Do learn and dont resort to any malpractices</p>
 
-  <h1 align="left" id="Overview">Overview</h1>
+  <h4>Reference Links : (Right Click is disabled ,So Ctrl+C and Ctrl+V the links)</h4>
+  <ul>
+    <li><a href="https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P"> Watch Videos 1-9 </a></li>
+    <li><a href="http://www.thelearningpoint.net/computer-science/data-structures-singly-linked-list-with-c-program-source-code">Link 2</a></li>
+    <li><a href="http://www.tutorialspoint.com/data_structures_algorithms/linked_lists_algorithm.htm">Basic Explanation </a></li>
+  </ul>
 
-  <p>Linked List problems.</p>
+  <h4>Practice Questions : </h4>
+  <ul>
+    <li>Implement your own versions of strlen,strcat,strcmp,strstr,strrev .</li>
+    <li>Find which character appeared maximum number of times in a String .</li>
+    <li>Given a String , convert it into a integer ?</li>
+    <li>Given a hexadecimal String ,Convert it into octal string ? Vice versa too .</li>
+    <li>Given a alphabatically sorted string , and two letters are interchanged .Find those letters and fix it .</li>
+    <li>Given two strings as input which are madeup of digits, find which string is greater ("123">"56")? (Dont convert it into integer and compare .)</li>
+    <li>Find two strings are anagrams are not in O(n) ?</li>
+    
+  </ul>
+  <h4>How to write good code :</h4>
+  
+  <ul>
+  <li>Name all variables in a meaningfull way </li>
+  <li>Use functions to seperate out the independent tasks</li>
+  <li>Write good modular code ,and dont over complicate functions with lots of lines .</li>
+  <li>Dont over optimize your solutions which results in unreadable code .</li>
+  <li>Use comments for lines ,which you feel needs an explanation .</li>
+  <li>Always code-review your own code and Refactor whenever possible .</li>
+  </ul>
+  <h4>C Strings Code Sample </h4>
+  <p>Program to convert all letters in a String from lowecase to UpperCase ,and uppercase to lowercase .</p>
 
-  <!-- <h1 align="left"><br />
-Pre Requisites</h1>
+<h5><b>Bad Code</b></h5>  
+<textarea id='problem1' name='problem1' rows='10' cols='80'>
 
-<p align="left">Other projects that are pre reqs before taking this up.</p>
+</textarea>
 
-<h1 align="left" id="Concepts">Concepts</h1>
+<h5><b>Good Readable Code</b></h5>  
+<textarea id='problem2' name='problem2' rows='10' cols='80'>
 
-<p align="left">Explain the basic concepts</p>
+</textarea>
+<script type="text/javascript">
 
-<p align="left">&nbsp;</p>
+  var cEditor = CodeMirror.fromTextArea(document.getElementById("problem1"), {
+    matchBrackets: true,
+    readOnly: "nocursor",
+    startStyle:"user-select: none",
+    mode: "text/x-csrc",
+    dragDrop:false
+  });
 
-<h1 align="left" id="Setup">Setup</h1>
-
-<p align="left">Instructions for setting up all the software and tools needed for the project</p>
-
-<h1 align="left"><br />
-Tutorial</h1>
-
-<p align="left"><br />
-A follow-along tutorial that walks the students thru&#39; a simple activity of the project.</p>
- -->
-  <h1 align="left" id="Activities">Project Activities<br />
-&nbsp;</h1>
-
-  <h2>numberToLinkedList</h2>
-
-  <p>Given a number convert that to single linked list (each digit as a node).</p>
-
-  <h2>012sllSort</h2>
-
-  <p>Given a single linked list of 0s 1s and 2s ,Sort the SLL such that zeroes will be followed by ones and then twos.</p>
-
-  <h2>twodigitLinkedList</h2>
-
-  <p>Given a single linked list (two digits as a node).Convert that to number.</p>
-
-  <h2>removeEveryKthNode</h2>
-
-  <p>Given a single linked list, remove every Kth node in the linked list.</p>
-
-  <h2>sortLinkedList</h2>
-
-  <p>Given an unsorted single linked list, sort the linked list without using extra array or linked list.</p>
-
+  var cEditor2 = CodeMirror.fromTextArea(document.getElementById("problem2"), {
+    matchBrackets: true,
+    readOnly: "nocursor",
+    startStyle:"user-select: none",
+    mode: "text/x-csrc",
+    dragDrop:false
+  });
+  
+</script>
 </body>
-
 </html>
