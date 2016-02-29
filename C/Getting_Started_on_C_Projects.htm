@@ -19,16 +19,21 @@
 
     <ol>
       <li>
-        <p>Install git from <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a>&nbsp; and allow the installer to add git.exe to your PATH environment variable.&nbsp;&nbsp;<span style="color: #ff0000"><span> </span></span>
+        <p>Install git from <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a>&nbsp; and allow the installer to add git.exe to your PATH environment variable.&nbsp;&nbsp;(Select second option while installing )<span style="color: #ff0000"><span> </span></span>
 
          <br><br>
          <b>
-           To configure the paths manually, add <b>&lt;InstallationDir&gt;/Git/bin</b> , <b>&lt;InstallationDir&gt;/Git/usr/bin</b> and <b>&lt;InstallationDir&gt;/Git/cmd</b> to the PATH environment variable.
+           To configure the paths manually, add <b>&lt;InstallationDir&gt;/Git/bin</b> , and <b>&lt;InstallationDir&gt;/Git/cmd</b> to the PATH environment variable.
          </b>
          <br>
        </p>
-
-       <p><span style="color: #ff0000"><span>TIP: After installation is successful open command prompt and type "git". You should see git usage commands.</span></span>
+      <li>
+         Add the following path to Environment variables <b>&lt;InstallationDir&gt;/Git/usr/bin</b>
+         <p>Installation Dir is where you installed git .Ex path :C:\Program Files\Git\usr\bin</p>
+      </li>
+      </li>
+      <li>
+       <p><span style="color: #ff0000"><span>TIP: After installation is successful open command prompt and type "git". You should see git usage commands.Type "ssh" to check whether its configured properly or not ,or else add the ssh path .</span></span>
        </p>
      </li>
      <li class="MsoNormal" pbzloc="64" style="line-height: normal">Signup for a github account at: <a href="http://github.com/">http://github.com/</a>&nbsp;if you dont have a github account</li>
@@ -46,6 +51,9 @@
   <ul>
     <li><a  target="_blank" href="https://www.youtube.com/watch?v=lVOs7yDWVr8&feature=youtu.be">Installing and Setting up Git </a></li>
     <li><a  target="_blank" href="https://www.youtube.com/watch?v=_POy289NMFA&feature=youtu.be">How to use Project Tracker Tool </a></li>
+    <li><a  target="_blank" href="https://msdn.microsoft.com/en-us/library/mt243867.aspx">How to Debug in Visual Studio (Text) </a></li>
+    <li><a  target="_blank" href="https://www.youtube.com/watch?v=C0vDKXIq_9A">How to Debug in Visual Studio (Video of CSharp ,but works for any language) </a></li>
+    
   </ul>
   <!-- <h1 align="left" display="none" id="Concepts">Concepts</h1>
 
@@ -80,8 +88,10 @@
 
   <ol>
 
-    <li class="MsoNormal" style="line-height: normal">For the initial launch, github username and password have to be provided to the tool configuration settings.</li>
+    <li class="MsoNormal" style="line-height: normal">For every launch, github username and password have to be provided to the tool configuration settings.</li>
     <p style="margin-left: 72pt"><span><img height="318" id="Picture 1" src="http://mission-rnd.github.io/assets/images/github_settings.png" width="572" /></span></p>
+
+    <li class="MsoNormal" style="line-height: normal">Click on Configure Git and Github ,to configure properly (Make sure ,ssh is added in ENV_PATH)</li>
 
     <li class="MsoNormal" style="line-height: normal">Following launch screen will appear once the tool is configured with required github credentials.</li>
 
