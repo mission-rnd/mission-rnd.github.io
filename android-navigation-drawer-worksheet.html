@@ -1,0 +1,247 @@
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sunburst"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<style>
+		pre.prettyprint{
+			width: auto;
+			overflow: auto;
+			max-height: 400px
+		}
+		.imgContainer{
+			float:left;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container theme-showcase">
+		<h1>Android Navigation Drawer</h1>
+		<br/>
+		<h2>Overview</h2>
+		<p>You are going to learn about how to use Navigation Drawer in Android </p>
+		<br/>
+		<h2>Concepts</h2>
+		<p>Android Navigation Drawer is a panel that can displays a list of options on left side of the screen .When clicked on each option user can be directed to a new Activity .It is usually hidden ,but revealed when <b> swiped from left edge </b>of the screen .It can also be opened when clicked on App Bar icon </p>
+		<p>Samples </p>
+		<img src="./assets/images/nav-drawer-1.jpg" height="400">
+
+		<p>For a navigation drawer to work ,you main XML file root must be a <b>DrawerLayout </b> .That means the xml file you are going to link with the Activity file on setContentView must have DrawerLayout tag as root </p>
+		<p>Drawer Layout has two parts , One for the Side-Menu and one more for the Actual Layout (FrameLayout).Tha Side menu will be displayed when Navigation Drawer is active and Actual Layout will be displayed when its closed </p>
+		<img src="./assets/images/nav-drawer-2.png" height="500">	
+		<p>The Actual Navigation Drawer is nothing but a ListView and each ListItem is displayed as an option </p>
+
+		<h2>Tutorial </h2>
+		<h3>Aim</h3>
+		<h4>1)To build a app with two options , Contacts and Countries .</h4>
+		<h4>2)When clicked on Contacts , Control goes to a new Activity called Contacts and displays it.</h4>
+		<h3>Steps </h3>
+		<ul>
+			<li> Go to the folder Navigation-Drawer downloaded from the Tool and Import it in the Android Studio
+			</li>
+			<li> <p>Copy the below code into the activity_main_tutorial.xml file (Replace the existing code  if any)</p>
+				<pre class="prettyprint lang-xmp">	
+&ltandroid.support.v4.widget.DrawerLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/drawer_layout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"&gt
+<!-- The main content view -->
+&ltFrameLayout
+android:id="@+id/content_frame"
+android:layout_width="match_parent"
+android:layout_height="match_parent" /&gt
+<!-- The navigation drawer -->
+&ltListView android:id="@+id/left_drawer"
+android:layout_width="240dp"
+android:layout_height="match_parent"
+android:layout_gravity="start"
+android:choiceMode="singleChoice"
+android:divider="@android:color/transparent"
+android:dividerHeight="0dp"
+android:background="#111"/&gt
+
+&lt/android.support.v4.widget.DrawerLayout&gt
+
+			</pre>
+		</li>
+		<li> <p>Modify the Tutorial Activity java file (OnCreate Method) such that it looks like this .Leave other methods as it is</p>
+			<pre class="prettyprint">
+public class Tutorial extends Activity {
+private ArrayList&ltString&gtnav_menu_items;
+private DrawerLayout mDrawerLayout;
+private ListView mDrawerList;
+...
+
+@Override
+public void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main_tutorial);
+
+//Adding new menu items
+nav_menu_items=new ArrayList&ltString&gt();
+nav_menu_items.add("Contacts");
+nav_menu_items.add("Countries");
+
+//We need Drawer Layout reference to Listen to Open/Close events
+mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+//List View reference to set it to a list of items and listen to Onclick events
+mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+//Linking our Array List to the DrawerList
+mDrawerList.setAdapter(new ArrayAdapter&ltString&gt(this,
+android.R.layout.simple_list_item_1, nav_menu_items));
+
+...
+}
+}
+
+	</pre>
+</li>
+<li>
+	<p>	Run the Tutorial file by Right Clicking on the java file in Project Explorer and clicking on Run .</p>
+	<p> You will get a Blank Page as output ,<b> Slide your finger from the left edge to the right to see the Navigation Drawer </b> </p>
+	<img src="./assets/images/nav-drawer-3.png" height="500">
+</li>
+<li>
+	<p>As you can see ,in the output ,you cant actually see The List items perfectly ,It is because we used the Default Layout File provided .(simple_list_item_1) . Now we can modify it by creating our own Layout File which contains only a TextView and use this as layout file for each list_item of Menu </p>
+	<p>Copy the following code in the nav_menu_item.xml file </p>
+	<pre class="prettyprint">
+&lt?xml version="1.0" encoding="utf-8"?&gt
+&ltTextView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@android:id/text1"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceListItemSmall"
+android:gravity="center_vertical"
+android:paddingLeft="16dp"
+android:paddingRight="16dp"
+android:textColor="#fff"
+android:background="?android:attr/activatedBackgroundIndicator"
+android:minHeight="?android:attr/listPreferredItemHeightSmall"/&gt
+
+	</pre>
+
+</li>
+<li>
+
+	<p>Now change the line in Tutorial Activity where we set ArrayAdapter to this (uses the just created nav_menu_item.xml)</p>
+	<pre class="prettyprint lang-java">
+mDrawerList.setAdapter(new ArrayAdapter&ltString&gt(this,R.layout.nav_menu_item, nav_menu_items));
+	</pre>
+</li>
+<li>
+	<p>Re Run the Application . Voila You got a nice Navigation Drawer . You can customize it more .</p>
+
+	<img src="./assets/images/nav-drawer-4.png" height="400">
+</li>
+
+<br/>
+<li>
+	<p>Now we need to know how to Navigate from One Activity to another .This is done using Intents .An Intent is a communication object used to Transfer control to other Activities .</p>
+	<p>Add the following code to TutorialListenerClass </p>
+	<pre class="prettyprint">
+Context ctxt;
+
+public TutorialListener(Context parent){
+ctxt=parent;
+
+}
+@Override
+public void onItemClick(AdapterView parent, View view, int position, long id) {
+selectItem(position);
+}
+private void selectItem(int position) {
+Intent intent;
+
+//Showing What Item is clicked
+Toast.makeText(ctxt, "Nav Item : " + position +" Clicked", Toast.LENGTH_SHORT).show();
+
+//Create New Intent ,the second parameter should be the Activity it needs to load 
+intent = new Intent(ctxt, ContactsActivity.class);
+
+//You need to call startActivity of Context , and pass Intent to it to start a new activity ,here ctxt is set in Constructor
+ctxt.startActivity(intent);
+
+}
+</pre>
+<p>
+	<b> Toast Description </b> I have used a Toast above ,which is used for basic Debugging steps . It can be used to show the user , What currently is happening inside the APP 
+</p>
+<p>
+	It needs 3 paramenters , Application Context ( The Context of the Activity which is running), Message ,and Length of Toast to be shown (It can be Toast.LENGTH_SHORT or Toast.LENGTH_LONG ).
+</p>
+<p>
+	show() method needs to be invoked for Toast to be shown
+</p>
+<p>
+	Here Application context (ctxt) is passed as a parameter to TutorialListenerClass
+</p>
+
+</li>
+<li>
+	<p>Use the Above Tutorial Listener Class in the Tutorial Activity </p>
+	<p>Append the following Code to Tutorial Activity's onCreate() method </p>
+	<pre class="prettyprint">
+mDrawerList.setOnItemClickListener(new TutorialListener(this));
+	</pre>
+	<p><b>Note :</b>Whatever Class you add in OnItemClickListener must implement ListView.OnItemClickListener interface</p>
+	<p>We have also passed this (Tutorial Context ) ,to be able to use it with Next Activity's Toast and for StartActivity</p>
+</li>
+<li>
+	<p>Here You can see The output again when you Run Tutorial and Click on Contacts in Navigation Drawer</p>
+	<img src="./assets/images/nav-drawer-5.png" height="400">
+</li>
+
+</ul>
+
+<h2>Task Navigation Drawer</h2>
+<h3>Aim</h3>
+<ul>
+	
+	<li><h4>Initially <b>NavigationDrawerActivity</b>needs to be loaded with activity_navigation_drawer.xml Layout file</h4></li>
+	<li><h4>Its Navigation Drawer has two options , Contacts and Countries . (uses nav_menu_item.xml )</h4></li>
+	<li><h4>When clicked on Contacts , control goes to a new Activity called Contacts and displays it.(uses activity_contacts.xml )</h4></li>
+	<li><h4>Add a ListView Component in activity_contacts.xml with a new id "contacts_list"</h4></li>
+	<li><h4>When clicked on Countries , control goes to a new Activity called Countries and displays it. (uses activity_countries.xml )</h4></li>
+	<li><h4>Add a ListView Component in activity_countries.xml with a new id "countries_list"</h4></li>
+	<li><h4>Use <b>NavigationDrawerListener</b> to transfer the Control from one Activity to another</h4></li>
+	<li><h4>Contacts Activity should display list of Contacts fetched from contacts.json file in ./res/raw folder (name attribute value is to be displayed)</h4></li>
+	<li><h4>Contacts Activity should display the list of Contact names in a List View of id "contacts_list"</h4></li>
+	<li><h4>Countries Activity should display list of Countries fetched from countries.json file in ./res/raw folder (name attribute value is to be displayed)</h4></li>
+	<li><h4>Countries Activity should display the list of Country names in a List View of id "countries_list"</h4></li>
+	
+</ul>
+<h2>Project Sample Images </h2>
+	<div class="imgContainer">
+        <img src="./assets/images/nav-drawer-6.png" height="500"/>
+        <p><b>This is first screen</b></p>
+    </div>
+    <div class="imgContainer">
+        <img src="./assets/images/nav-drawer-7.png" height="500"/>
+        <p><b>This is Navigation Drawer</b></p>
+    </div>
+    <div class="imgContainer">
+        <img src="./assets/images/nav-drawer-8.png" height="500"/>
+        <p><b>Contacts Activity</b></p>
+    </div>
+    <div class="imgContainer">
+        <img src="./assets/images/nav-drawer-9.png" height="500"/>
+        <p> <b>Countries Activity </b></p>
+    </div>
+
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
+
