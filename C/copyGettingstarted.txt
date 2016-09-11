@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+  <title>Getting Started on C Projects</title>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body class="container" bgcolor="#ffffff">
+  <h1 align="center">Getting Started on C Projects</h1>
+
+  <h1 align="left" id="Overview">Overview</h1>
+
+  <p>The following steps will walk you through the setup for C projects:</p>
+
+  <h1 align="left">
+    Pre Requisites</h1>
+
+    <ol>
+      <li>
+        <p>Install git from <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a>&nbsp; and allow the installer to add git.exe to your PATH environment variable.&nbsp;&nbsp;(Select second option while installing )<span style="color: #ff0000"><span> </span></span>
+
+         <br><br>
+         <b>
+           To configure the paths manually, add <b>&lt;InstallationDir&gt;/Git/bin</b> , and <b>&lt;InstallationDir&gt;/Git/cmd</b> to the PATH environment variable.
+         </b>
+         <br>
+       </p>
+      <li>
+         Add the following path to Environment variables <b>&lt;InstallationDir&gt;/Git/usr/bin</b>
+         <p>Installation Dir is where you installed git .Ex path :C:\Program Files\Git\usr\bin</p>
+      </li>
+      </li>
+      <li>
+       <p><span style="color: #ff0000"><span>TIP: After installation is successful open command prompt and type "git". You should see git usage commands.Type "ssh" to check whether its configured properly or not ,or else add the ssh path .</span></span>
+       </p>
+     </li>
+     <li class="MsoNormal" pbzloc="64" style="line-height: normal">Signup for a github account at: <a href="http://github.com/">http://github.com/</a>&nbsp;if you dont have a github account</li>
+
+     <li>Install Visual Studio Express 2013 for Windows Desktop. Installer Links are Below .
+      <ul class="list">
+        <li><a href="https://download.microsoft.com/download/9/6/4/96442E58-C65C-4122-A956-CCA83EECCD03/vs2013.4_dskexp_ENU.iso">Offline Installer</a>
+        </li>
+        <li><a href="https://download.microsoft.com/download/9/6/4/96442E58-C65C-4122-A956-CCA83EECCD03/wdexpress_full.exe">Online Installer</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <h2>Tutorials :</h2>
+  <ul>
+    <li><a  target="_blank" href="https://www.youtube.com/watch?v=lVOs7yDWVr8&feature=youtu.be">Installing and Setting up Git </a></li>
+	<li><a  target="_blank" href="https://www.youtube.com/watch?v=Q0A-KBnw_zo">How to Install Visual Studio 2013 Express </a></li>
+	<li><a  target="_blank" href="https://www.youtube.com/watch?v=rydtxg8gQz0">How to Create a Sample C/C++ Project in VS2013 and Run it .</a></li>
+	<!--
+    <li><a  target="_blank" href="https://www.youtube.com/watch?v=_POy289NMFA&feature=youtu.be">How to use Project Tracker Tool </a></li>
+	-->
+    <li><a  target="_blank" href="https://msdn.microsoft.com/en-us/library/mt243867.aspx">How to Debug in Visual Studio (Text) </a></li>
+    <li><a  target="_blank" href="https://www.youtube.com/watch?v=C0vDKXIq_9A">How to Debug in Visual Studio (Video of CSharp ,but works for any language) </a></li>
+    
+  </ul>
+  <!-- <h1 align="left" display="none" id="Concepts">Concepts</h1>
+
+  <p align="left">Explain the basic concepts</p>
+
+  <p align="left">&nbsp;</p> -->
+
+  <h1 align="left" id="Setup">Setup</h1>
+
+  <ol>
+    <li>
+      Install project tracker tool. These Links Work On/After 15th September 2016
+      <ul class="list">
+	  
+        <li><a href="">64 bit Installer</a>
+        </li>
+        <li><a href="">32 bit Installer</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+  <h1 align="left">Steps to run tests in visual studio</h1>
+  <ol>
+    <li>Open visual studio after installation is successful.</li>
+    <li>Select <strong>FILE --&gt; Open Project</strong>. Choose .sln file of the project.</li>
+    <li>You will see spec and src projects. spec project contains all test files and src project contains all source files.</li>
+    <li>Now run tests from <strong>TEST --&gt; Run --&gt; All Tests</strong>. You will see test results on left pane.
+    </li>
+    <li>If you want to debug any test, keep a breakpoint in the file you want to debug and run test from <strong>TEST --&gt; Debug --&gt; All Tests</strong>.</li>
+  </ol>
+  <p class="MsoNormal" style="line-height: normal"><b><span style="font-size: 18pt">Getting Started with the tool</span></b></p>
+
+  <ol>
+
+    <li class="MsoNormal" style="line-height: normal">For every launch, github username and password have to be provided to the tool configuration settings.</li>
+    <p style="margin-left: 72pt"><span><img height="318" id="Picture 1" src="http://mission-rnd.github.io/assets/images/github_settings.png" width="572" /></span></p>
+
+    <li class="MsoNormal" style="line-height: normal">Click on Configure Git and Github ,to configure properly (Make sure ,ssh is added in ENV_PATH)</li>
+
+    <li class="MsoNormal" style="line-height: normal">Following launch screen will appear once the tool is configured with required github credentials.</li>
+
+    <p style="margin-left: 72pt"><span><img height="318" id="Picture 1" src="http://mission-rnd.github.io/assets/images/launcher.png" width="572" /></span></p>
+
+    <li class="MsoNormal" style="line-height: normal">Click on create new project and select the project that you want to start working with </li>
+
+    <p style="margin-left: 72pt"><span><img height="318" id="Picture 1" src="http://mission-rnd.github.io/assets/images/create_project.png" width="572" /></span></p>
+
+    <p style="margin-left: 72pt"><span><img height="318" id="Picture 1" src="http://mission-rnd.github.io/assets/images/project.png" width="572" /></span></p>
+
+    <li class="MsoNormal" style="line-height: normal">The project home screen shows the activities that are completed and the activities that haven't been completed. 
+
+      It has the options to test and submit your code.</li>
+
+      <p style="margin-left: 72pt"><span><img height="318" id="Picture 1" src="http://mission-rnd.github.io/assets/images/open_project.png" width="572" /></span></p>
+
+
+      <li class="MsoNormal" style="line-height: normal">Open the cloned project in<strong><b> Microsoft visual studio 2013 </b></strong>and start completing activities in the required order.</li>
+
+      <li class="MsoNormal" style="line-height: normal">You can run All tests from Visual studio itself ,From Test->Run->AllTests .You can view the Test cases which failed here.Once you passed all test cases for a particular question or all testcases ,You can start Test and submit from the tool</li>
+
+      <li class="MsoNormal" style="line-height: normal"><span>Complete the assignments by coding the activities in the project directory. Each project is broken into a set of activities. Once you have coded an activity, you can verify if your code is correct by running predefined test cases. The pre-defined tests are under the spec folder.</span></li>	 
+	  
+      <p style="margin-left: 72pt"><span><img height="118" id="Picture 1" src="http://mission-rnd.github.io/assets/images/fail.png" width="572" /></span><br>Tests Failed</p>
+
+      <p style="margin-left: 72pt"><span><img height="118" id="Picture 1" src="http://mission-rnd.github.io/assets/images/pass.png" width="572" /></span><br>Tests Passed</p>
+
+      <li class="MsoNormal" style="line-height: normal">Once tests gets passed, You need to Submit the Code to us by Clicking on Submit button.This will copy your current Project CPP files into Drive directory</li>
+
+      <p style="margin-left: 72pt"><span><img height="118" id="Picture 1" src="http://mission-rnd.github.io/assets/images/submitted.png" width="572" /></span></p>
+
+    </ol>
+
+    <p class="MsoListParagraphCxSpLast" style="line-height: normal; text-indent: -18pt"><strong><b><span style="font-size: 13pt">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size: 13pt">Repeat steps 6 and step 7, till all the project&nbsp;activities have been completed.</span></b></strong></p>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  </body>
+
+  </html>
