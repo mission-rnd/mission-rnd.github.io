@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+  <script src="./../../assets/js/codemirror.js"></script>
+  <link rel="stylesheet" href="./../../assets/css/codemirror.css">
+  <script src="./../../assets/js/clike.js"></script>
+
+  <script src="./../../assets/js/matchbrackets.js"></script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+
+  <div> <h2> C-15 Puzzle</h2></div>
+  <p><b> Objective of the Game .</b></p>
+
+<p>Given a Random Board of 15 Pieces .You need to move the pieces in such a way that all pieces will be in asceding order or correct order . You can refer the below link for the Game details .The Correct order is the one shown in the picture . Link : https://en.wikipedia.org/wiki/15_puzzle</p>
+
+<p>How we are going to Design the Game .?</p>
+
+<p>We are using a Board structure to store the Table information , which also stores rows,cols,Empty Tile Row and Empty Tile Column . All The Board Related functions are in BoardUtils.h We are representing the emptyTile using 0 in the 2d Array . We are using a User struct to store Who is playing the game and the number of moves he made .We are going to revisit this game again ,So make sure you are implementing every feature . User related functions are present in UserUtils.h</p>
+
+<p>How Game is played : It is played by moving some other Tile into the empty Space . Ex if the first row has 1,0,2,4 [0 specifying empty Tile ] ,By pressing D and Enter , The First row will be modified as 0,1,2,4 .</p>
+
+<p>W is used to move any Tile to the Up , S is used to move any Tile down , A for left and D for right .</p>
+
+<p>Ex Move 'A' or 'a' :</p>
+
+<p> 1 2  3   &nbsp&nbsp&nbsp&nbsp&nbsp   1 2 3 </p>
+<p> 4 &nbsp&nbsp 5  &nbsp=> &nbsp&nbsp&nbsp4 5   </p>
+<p> 6 7 8    &nbsp&nbsp&nbsp&nbsp&nbsp  6 7 8 </p>
+
+<p>Ex Move 'D' or 'd' :</p>
+
+<p> 1 2  3   &nbsp&nbsp&nbsp&nbsp&nbsp   1 2 3 </p>
+<p> 4 &nbsp&nbsp 5  &nbsp=> 4 5   </p>
+<p> 6 7 8    &nbsp&nbsp&nbsp&nbsp&nbsp  6 7 8 </p>
+
+<p>Ex Move 'W' or 'w' :</p>
+
+<p> 1 2  3   &nbsp&nbsp&nbsp&nbsp&nbsp   1 2 3 </p>
+<p> 4 &nbsp&nbsp 5  &nbsp=> 4 7 5   </p>
+<p> 6 7 8    &nbsp&nbsp&nbsp&nbsp&nbsp  6 &nbsp&nbsp 8 </p>
+
+<p>Ex Move 'S' or 's' :</p>
+
+<p> 1 2  3   &nbsp&nbsp&nbsp&nbsp&nbsp   1 &nbsp&nbsp 3 </p>
+<p> 4 &nbsp&nbsp 5  &nbsp=> 4 2 5   </p>
+<p> 6 7 8    &nbsp&nbsp&nbsp&nbsp&nbsp  6 7 8 </p>
+
+<p>If by making moves you reach the final Correct position ,The game is completed .</p>
+
+<p>Moves Related Functions are There in MovesUtils.h</p>
+
+<p>What you need to do . Just go over every function in all 3 files ,once and Read the description .[If you dont get it its okay ] Now read the Comments in the main function . Implement Step by Step .</p>
+
+<p>You need to fill all the helper functions in all Utils Files and the test cases will directly call them and check . Make sure you satisfy all constraints of the helper Functions.Main Function is for you to get a feel of how game is played and see any errors .</p>
+
+<p><b>We want you to learn how to get Good Code in this lesson and how to modularise , If you really think through ,you will easily get that by writing game in this way ,It can be scalable for any more features , and anyone else can understand our code easily .You can go through the Test Cases , and Have fun building more test cases too .</b></p>
+
+</body>
+</html>
