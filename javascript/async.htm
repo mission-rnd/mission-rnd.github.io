@@ -15,7 +15,117 @@
 </head>
 <body class="container">
 
-  <div> <h2>Async Programming</h2></div>
+<h1>Getting Started with Asynchronous programming.. </h1>
+
+<h2>What is async programming.. </h2>
+
+<p>Before understanding async programming, first lets see the traditional way of programming, i.e., synchronous calls. Example below.</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+    <caption>&nbsp;</caption>
+    <tbody>
+    <tr>
+        <td>
+            <p>console.log("one");</p>
+
+            <p>console.log("two");</p>
+
+            <p>console.log("three");</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+-------------------------------------------------
+<p>The output of the above code snippet would be</p>
+
+<b><p>one<br>two<br>three</p></b>
+-------------------------------------------------
+
+
+<h3>Now consider the following example..</h3>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+    <caption>&nbsp;</caption>
+    <tbody>
+    <tr>
+        <td>
+            <p>console.log("one");</p>
+
+            <p>callSomeFunction(params, function(respone) {<br>&nbsp;&nbsp;console.log("two");<br>}</p>
+
+            <p>console.log("three");</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+-------------------------------------------------
+<p>The output of the above snippet would be..</p>
+
+<b><p>one<br>three<br>two</p></b>
+-------------------------------------------------
+
+
+<p>The main difference is that, the statement <b>console.log("three");</b> does not wait for the complete execution of <br>
+    <b>callSomeFunction(params, function(respone) {<br>&nbsp;&nbsp;console.log("two");<br>}</b></p>
+
+<p>Here console.log("two") statement is waiting for the function callSomeFunction() to be completed. As this is async behaviour, console.log("three") gets invoked by the main thread.</p>
+
+<h3>Deeper analysis</h3>
+
+<p>If the method <b>callSomeFunction</b> has a I/O process to be executed, the Main thread of the JavaScript Runtime, delegates the method's execution to a worker thread. So, now the main thread is free to execute next statements. Hence, <b>three</b> would be printed earlier than <b>two</b> in the above example.</p>
+<br>
+<h3>What is a callback function?</h3>
+<p>In the above example, since <b>callSomeFunction</b> method is async, it cannot return value to the main thread. In this context, we will make use of callback function. It is a function handler that is invoked after the async method is executed completely. The results of the async method are passed to the callbacks as parameters. </p>
+<br>
+
+<h2>Why asynchronous?</h2>
+
+<p>Synchronous blocks potentially block the further execution of the other statements until and unless they are completely executed. The primary disadvantage with such blocking calls is that, it makes client's UI completely sluggish.</p>
+
+<h2>Best Practices.. </h2>
+
+<p>Always expose <b>error first callbacks</b></p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px">
+    <caption>&nbsp;</caption>
+    <tbody>
+    <tr>
+        <td>
+            <p>function doSomething(params ..., callback) {<br> &nbsp;&nbsp;//do something.. <br>&nbsp;&nbsp;callback(err, response) <br> }</p>
+            <p> .......... </p>
+            <p>doSomething(params, function(err, data) { <br> &nbsp;&nbsp;if(err) { <br>&nbsp;&nbsp;&nbsp;&nbsp;//handle error.. <br> &nbsp;&nbsp;&nbsp;&nbsp;return;<br>&nbsp;&nbsp;} <br> &nbsp;&nbsp;//handle correct response <br>});</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<b>Coding standards...</b>
+<ul>
+    <li>Always return on callbacks.</li>
+    <li>Use try...catch blocks only for synchronous code. It doesn't work for callbacks.. </li>
+    <li>Avoid usage of this keyword. </li>
+</ul>
+
+<b>Challenges..</b>
+<ul>
+    <li>If not handled properly, the code ends up with Callback hell / spaghetti code. </li>
+    <li>Error handling should be done properly.</li>
+    <li>Return and throw keywords have zero significance. </li>
+</ul>
+
+<b>Making life easier with callbacks</b>
+<ul>
+    <li>using of async library - <a href = https://www.npmjs.com/package/async> ASYNC</a></li>
+    <li>using of promises library - <a href = https://www.npmjs.com/package/promise> PROMISE</a></li>
+</ul>
+
+
+
+<div> <h2>Async Programming Activities</h2></div>
 
   <p><b>This project aims at understanding the asynchronous programming pattern which is essential in understanding various frameworks</b>
   </p>
@@ -31,7 +141,7 @@
     
     <h4>Arithmetic operators using Async programming.. </h4>
     
-    <h5>Solve the following set of methods to get brief understanding about the Async programming.. </h4>
+    <h4>Solve the following set of methods to get brief understanding about the Async programming.. </h4>
     
   <ul>
         <li>Implement functions add, sub, mul and div with the signature <b>func(num1, num2, callback)</b></li>
