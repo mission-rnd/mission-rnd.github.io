@@ -3,7 +3,7 @@
 <head>
 <meta name="GENERATOR" content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)">
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
-<title>nodejs-rest5</title>
+<title>nodejs-http</title>
 </head>
 <body bgcolor="#ffffff">
 <h1 align="center">NodeJS RESTful Services.</h1>
@@ -239,20 +239,28 @@
 <p>In this activity, you will implement a http service that supports the following operations:</p>
 
 <ol>
-	<li>GET /calculator/sum?op1=&lt;num&gt;&amp;op2=&lt;num&gt; should return the sum of op1 and op2 in the JSON response.</li>
-	<li>POST /calculator/sum where the request body is the following JSON document: {&ldquo;op1&rdquo;:&rdquo;num&rdquo;,&rdquo;op2&rdquo;:&rdquo;num&rdquo;} and returns the sum of op1 and op2 in the response.</li>
+	<li>GET /calculator?op=&lt;operation&gt;&op1=&lt;num&gt;&op2=&lt;num&gt;
+		should return the operation result on the numbers in the response.</li>
+	<li>POST /calculator and request body is a json object {&quot;op&quot;:&lt;operation&gt;,&quot;op1&quot;:&lt;num&gt;,&quot;op2&quot;:&lt;num&gt;}
+		and returns the operation result on the numbers in the response.</li>
 </ol>
 
-<p>You will write your code into CalculatorHttpService.js.</p>
-
+		<b>Supported Operations:add,sub,mul,div.You will write your code into CalculatorHttpService.js.</b>
 <h2>ContactsHttpService</h2>
 
 <p>In this activity, you will implement a REST service to manage contacts. The rest service will store/retrieve contacts in a mysql database. The rest service will implement the following operations:</p>
 
 <ol>
-	<li>GET /contacts/id &ndash; This will read the specified contact from the mysql database and return it in the response.</li>
-	<li>POST /contacts &ndash; This will accept a JSON payload, create the contact in mysql database and return id in the response. Format of JSON request body is: {&ldquo;firstName&rdquo;:&rdquo;&rdquo;,&rdquo;lastName&rdquo;:&rdquo;&rdquo;,&rdquo;phone&rdquo;:&rdquo;&rdquo;}</li>
-	<li>PUT /contacts/id &ndash; This will update the specified contact&rsquo;s details with the details in the JSON payload.</li>
+	<li>GET /contacts/id &ndash;This will read the specified contact from in memory data structure and return it in the response.
+	</li>
+	<li>POST /contacts &ndash; This will accept a JSON payload, create the contact in memory data structure and return id in the JSON response.
+		Format of JSON request body is: {&quot;firstName&quot;:&quot;&quot;,&quot;lastName&quot;:&quot;&quot;,&quot;phone&quot;:&quot;&quot;} and
+		response format is {&quot;id&quot;:&lt;id of the new contact&gt;}</li>
+	<li>PUT /contacts/id &ndash; This will update the specified contact&#39;s details with the details in the JSON payload.
+	Only fields that are specified in the request body need to be updated.
+	Other fields of that contact should remain unchanged.
+	Format of JSON request body is: {&quot;firstName&quot;:&quot;&quot;,&quot;lastName&quot;:&quot;&quot;,&quot;phone&quot;:&quot;&quot;}
+		and response format is {&quot;id&quot;:&lt;id of the new contact&gt;}</li>
 </ol>
 
 <p>You will write your code into ContactsHttpService.js</p>
