@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nodejs Express Intro</title>
+</head>
+<body>
+
+<h1 align="center">NodeJS RESTful Services.</h1>
+
+<h1>Overview</h1>
+
+<p>You will be introduced to the Express framework. <a href = "http://expressjs.com/">Express</a></p>
+
+<p><b>Express Framework</b> is a minimal and flexible Node.js web application framework that provides a robust
+    set of features to develop web and mobile applications. It facilitates the rapid development of Node based Web applications.</p>
+
+<h3>Installing Express framework</h3>
+
+<b>npm install express</b> - In your project's directory.
+
+<h3>Getting started with express framework</h3>
+
+<p>Before jumping into the lessons, get your hands dirty to understand the framework and it's components. </p>
+
+<h4>Steps to create an express application</h4>
+
+<ul>
+    <li>Choose an empty directory and run <b>npm init</b> - It creates an package.json file.</li>
+    <li>Package.json <a href="https://docs.npmjs.com/files/package.json">What is package.json?</a></li>
+    <li>Install express in your project's directory <b>npm install express --save</b></li>
+    <li><b>--save</b> option updates your package.json file with the express dependency to the project</li>
+    <li>Create a file named app.js and write the following code. </li>
+    <li>
+        <table border="1" cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr>
+                <td style="width: 601px">
+                    <p> //require express. <br>
+                        var express = require('express') ; <br>
+
+                        <br>
+                        //initialize express. <br>
+                        var app = express() <br>
+
+                        <br>
+                        //add a basic route -- GET on '/' will return Hello World! <br>
+                        app.get('/', function (req, res) { <br>
+                            res.send('Hello World!') <br>
+                        }) <br>
+                        <br>
+                        //start listening to the port 3000 <br>
+                        app.listen(3000, function () { <br>
+                            console.log('Example app listening on port 3000!') <br>
+                        })</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </li>
+    <li>For trying out other new terms from express, go through the Getting Started docs of
+        <a href="https://expressjs.com/">Expressjs</a></li>
+
+</ul>
+<h3>REST Protocol Concepts</h3>
+
+<strong>Representational State Transfer protocol</strong>
+
+<ul>
+    <li>Rest protocol is not an alternate to Http protocol. It is an approach to leverage Http. </li>
+    <li>It is a style of architecture based on a set of principles that describe
+        how networked resources are defined and addressed.</li>
+</ul>
+
+<h3>Characteristics of REST</h3>
+
+An application or architecture considered RESTful or REST-style is characterized by:
+<ul>
+    <li>State and functionality are divided into distributed resources</li>
+    <li>Every resource is uniquely addressable using a uniform and minimal set of commands
+        (typically using HTTP commands of GET, POST, PUT, or DELETE over the Internet)</li>
+    <li>The protocol is client/server, stateless, layered, and supports caching</li>
+</ul>
+
+<h1>Project Activities</h1>
+
+<h2>ExpressIntro</h2>
+
+<p>You will implement the following components to pass all the test cases.</p>
+
+<ul>
+    <li>Setup basic server and respond to POST and GET requests</li>
+    <li>Setup Route to the <b>users</b> resources such that requests with url path &quot;/users/&quot; are routed to users.js file</li>
+    <li>Statically serve the image available at /public/images directory.</li>
+    <li>Implement CRUD operations on Contacts object on route /contacts/. Use REST recommended URL specifications.</li>
+</ul>
+
+</body>
+</html>
