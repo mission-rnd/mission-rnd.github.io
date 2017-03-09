@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nodejs Sample test</title>
+</head>
+<body>
+
+<h1 align="center">NodeJS Sample test</h1>
+
+<h1>Overview</h1>
+<hr>
+<b> The objective of this activity is to understand the semantics used for mock and final tests. </b>
+<hr>
+<b> In this project you will have to just perform basic CRUD operations. No need to perform next level validations.</b>
+<hr>
+<br>
+<h2> What's new? </h2>
+
+<ul>
+    <dt>A new function getDbConfig in models/databaseHelper.js</dt>
+    <dd>The objective of the method is to return the dbConfig object with host, port, database name, user and password required to
+    connect to the database.</dd>
+
+    <br>
+
+    <dt>GetConnection method in models/databaseHelper.js</dt>
+    <dd>The objective of the method is to return the mysql connection created with the passed config.
+
+    <b>The connection should be created with the passed dbConfig only! Else, server side test cases will take a hit!!!</b>
+    </dd>
+    <br>
+
+    <dt>setupTasksTable method in models/tasks.js</dt>
+    <dd>The objective of the method is used to create the tasks table programmatically. <b>This has to be implemented. Else, tests will not
+        run at the server side. </b></dd>
+</ul>
+
+<br>
+
+<h2>Efficient use of models.</h2>
+
+<ul>
+    <li>models/tasks.js - Several methods are defined in this file which are intended to perform CRUD operations on tasks object.</li>
+    <li>routes/tasks.js - All the requests coming to the url /tasks should be routed to this file. It will perform the basic validations and
+    should invoke corresponding operation from models/tasks.js</li>
+    <li>This will neatly decouple the business logic with the database operations.</li>
+</ul>
+
+<h2>Project Activities</h2>
+
+<h3>SampleServer</h3>
+
+<p>You will implement the following components to pass all the test cases.</p>
+
+<ul>
+    <li>Setup express server</li>
+    <li>Setup Route to the <b>tasks</b> resources such that requests with url path &quot;/tasks/&quot; are routed to routes/tasks.js file</li>
+    <li>Implement CRUD operations on Students object on route /tasks/. Use REST recommended URL specifications.</li>
+    <li>Use MySQL database for persistent storage of the data.</li>
+</ul>
+
+</body>
+</html>
