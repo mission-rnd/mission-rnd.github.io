@@ -16,6 +16,18 @@
 
 <p> The idea is to develop a service which can be used to handle booking of tickets for buses. </p>
 
+<h3> Pre-requisite ** Important **</h3>
+
+<ul>
+    <li>No need to write functions for Get and EndConnections in models/databaseHelpers.js</li>
+    <li>Update your Db Config manually in the file models/databaseHelpers.js <b>Line number 8.</b></li>
+    <li>The DB Config variable will be used by the GetConnection method which we have already written. </li>
+    <li>Make sure that you make use of the same GetConnection and EndConnection method when you perform Db operations</li>
+    <li>Write code to create the required tables in the method <b>setupTicketsTable in models/tickets.js</b></li>
+    <li>Also, setupTicketsTable method should ensure that the table tickets has zero rows. i.e., it should delete the existing data.</li>
+</ul>
+
+
 <h3> Implement the following rest endpoints</h3>
 
 <ul>
@@ -213,6 +225,11 @@ src, dest, name, doj and pnr. <strong>Facilities will not be used as a query par
 <hr>
 <li>
     City names can be case-insensitive. <b>hyderabad and HYDERabad are valid city names </b>
+</li>
+<hr>
+<li>
+    DO NOT USE any library than the ones which are recommended. We are not keeping track of libraries that you are using.
+    So, in case of any such usage, your tests will not be executed on the server machines. 
 </li>
 </body>
 </html>
