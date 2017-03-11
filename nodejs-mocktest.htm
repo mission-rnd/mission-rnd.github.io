@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nodejs Mock test</title>
+</head>
+<body>
+
+
+<h1 align="center">NodeJS Mock test</h1>
+
+<p>In this project, write code for the given REST contract</p>
+
+<h2> Bus ticketing service. </h2>
+
+<p> The idea is to develop a service which can be used to handle booking of tickets for buses. </p>
+
+<h3> Implement the following rest endpoints</h3>
+
+<ul>
+    <li>
+        <strong>POST /tickets</strong>
+
+        API is used to book a ticket for a given route. <br>
+
+        Request body : <br>
+        <pre>
+            {
+                "src" : &lt;valid_city&gt;,
+                "dest" : &lt;valid_city&gt;,
+                "name" : &lt;valid_name&gt;,
+                "doj" : &lt;valid_date&gt;,
+                "facilities" : {
+                    "key1" : "value1",
+                    "key2" : "value2",
+                }
+            }
+        </pre>
+        Constraints explained..
+        <ul>
+            <li>
+                source and destination should be from valid cities only.
+                <b>Hyderabad, Bangalore, Delhi, Kolkata, Chennai, Ahmedabad, Pune and Mumbai</b>
+            </li>
+            <li>
+                Name should be valid. No numeric or special characters. Space and dot can be allowed.
+            </li>
+            <li>
+                Date should be greater than current date and less than four months from current date. i.e., If today's date is 12th March, User can book
+                a ticket only till 11th July.
+            </li>
+            <li>
+                Facilities is a key value pairs. You can add any facility you want. No need of validations here.
+            </li>
+        </ul>
+        <br>
+        <b>Response: Return a pnr string. It has to be of length 6. Not more or less than six. This PNR will be used to READ, Update or Delete the ticket.</b>
+
+        <br>Http status codes.
+        <ul>
+            <li>201 (Created) If booking is successful</li>
+            <li>400 (Bad request) If invalid / incomplete data is given</li>
+        </ul>
+        <hr/>
+    </li>
+
+    <li>
+        <strong>GET /tickets/:pnr</strong>
+
+        Return the all the details of the given PNR number.
+
+        <br>Http status codes.
+        <ul>
+            <li>200 (Ok) If ticket is available with given PNR.</li>
+            <li>404 (Not Found) If ticket with PNR is not available</li>
+        </ul>
+        <hr/>
+    </li>
+
+    <li>
+        <strong> PUT /tickets/:pnr</strong>
+
+        Only facilities for a ticket can be updated using this api. <b>No other field can be updated using update api.</b>
+
+        Request body : <br>
+        <pre>
+            {
+                "facilities" : {
+                    "key1" : "value1",
+                    "key2" : "value2"
+                }
+            }
+        </pre>
+
+        The facilities for the ticket with given PNR should be Updated with the given facilities. Do not replace the whole set of facilities.
+        <br>
+        For example - If facilities before update are
+        <pre>
+            {
+                "key1" : "oldvalue"
+            }
+        </pre>
+
+        Facilities post update should be
+        <pre>
+            {
+                "key1" : "value1",
+                "key2" : "value2"
+            }
+        </pre>
+
+        <b> Note how key1 facility got updated from oldvalue to value1 and key2 facility got updated.</b>
+
+        <br>Http status codes..
+        <ul>
+            <li>204 (No Content) If ticket is available with given PNR and update operation is successful</li>
+            <li>404 (Not Found) If ticket with PNR is not available</li>
+            <li>400 (Bad request) If invalid data is given for update operation</li>
+        </ul>
+        <hr/>
+    </li>
+
+    <li>
+        <strong>DELETE /tickets/:pnr</strong>
+
+        API is used to cancel the ticket. Cancellation doesn't mean that the ticket details has to be deleted.
+
+        <br>Http Status codes..
+        <ul>
+            <li>204 (No Content) If ticket is available with given PNR and delete operation is successful</li>
+            <li>404 (Not Found) If ticket with PNR is not available or if the Ticket is already cancelled. </li>
+        </ul>
+        <hr/>
+    </li>
+
+    <li>
+        <strong>GET /tickets</strong> - Returns the list of pnrs of all the tickets.
+
+        Sample response : ["pnr1", "pnr2", "pnr3"]
+
+        <br>
+
+        If query params contains the key <b>fulldata=true</b>, return details of all the tickets.
+
+        Sample response:
+                <pre>
+                    [
+                        {
+                            "pnr" : "pnr1",
+                            "src" : "src1",
+                            "dest" : "dest1",
+                            "name" : "name1",
+                            "facilities" : {},
+                            "doj" : "date of journey"
+                            }, {
+                            "pnr" : "pnr2",
+                            "src" : "src1",
+                            "dest" : "dest1",
+                            "name" : "name1",
+                            "facilities" : {},
+                            "doj" : "date of journey"
+                        }
+                    ]
+                </pre>
+
+        <br>Http Status codes..
+        <ul>
+            <li>200 (Ok) If operation is successful</li>
+            <li>400 (Bad request) If invalid query filters are passed for the request.  </li>
+        </ul>
+        <hr/>
+    </li>
+
+    <li>
+        <strong>GET /tickets/cancelled</strong>
+
+        API is used to list the PNRs of all the cancelled tickets.
+
+        <br>Http Status codes..
+        <ul>
+            <li>200 (Ok) If operation is successful</li>
+            <li>400 (Bad request) If invalid query filters are passed for the request.  </li>
+        </ul>
+
+        <hr/>
+    </li>
+</ul>
+
+
+<h2> Important instructions ... </h2>
+<ul></ul>
+<li>
+For the two GET operations /tickets and /tickets/cancelled, output data can be filtered with various query params like
+src, dest, name, doj and pnr. <strong>Facilities will not be used as a query param here. </strong>
+</li>
+<hr>
+<li>
+    Ensure that all the validations, duplicates, invalid data, corner cases are handled.
+</li>
+<hr>
+<li>
+    Ensure that for get operations, <b>Only return pnr, src, dest, name, facilities and doj. No other field should be sent. </b>
+</li>
+<hr>
+<li>
+    The length of PNR should be six!
+</li>
+<hr>
+<li>
+    Other than facilities, no other property can be null during ticket creation.
+</li>
+<hr>
+<li>
+    City names can be case-insensitive. <b>hyderabad and HYDERabad are valid city names </b>
+</li>
+</body>
+</html>
