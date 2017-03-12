@@ -149,7 +149,10 @@
     <li>
         <strong>GET /tickets</strong> - Returns the list of pnrs of all the tickets.
 
-        Sample response : ["pnr1", "pnr2", "pnr3"]
+        Sample response :
+        <br>
+
+        <pre>["pnr1", "pnr2", "pnr3"]</pre>
 
         <br>
 
@@ -176,6 +179,47 @@
                     ]
                 </pre>
 
+        Applying query params to the request.
+        <br>
+        Sample request : GET /tickets/?name="nikhil"&fulldata=true
+
+        <br>
+        Response would be
+        <pre>
+            [
+                {
+                    "pnr" : "pnr1",
+                    "src" : "hyderabad",
+                    "dest" : "delhi",
+                    "name" : "nikhil reddy",
+                    "facilities" : {},
+                    "doj" : "date of journey"
+                    }, {
+                    "pnr" : "pnr2",
+                    "src" : "hyderabad",
+                    "dest" : "pune",
+                    "name" : "nikhil kumar",
+                    "facilities" : {},
+                    "doj" : "date of journey"
+                }
+            ]
+        </pre>
+
+        <b>Please note that the name should be filtered with like clause. Not the exact match. </b>
+
+        <br><br>
+
+        Similarly for request : GET /tickets/?name="nikhil", Response would be
+
+        <br>
+
+        <pre>
+            ["pnr1", "pnr2"];
+        </pre>
+
+        <b>Mind that if fulldata != true, only return the list of PNRs</b>
+        <br>
+
         <br>Http Status codes..
         <ul>
             <li>200 (Ok) If operation is successful</li>
@@ -188,6 +232,16 @@
         <strong>GET /tickets/cancelled</strong>
 
         API is used to list the PNRs of all the cancelled tickets.
+
+        Applying query params to the request.
+        <br>
+        Sample request : GET /tickets/cancelled?name="nikhil"
+
+        <br>
+        Response would be
+        <pre>
+            ["pnr1", "pnr2"] // List of PNRs of cancelled tickets with name containing <b>nikhil</b>.
+        </pre>
 
         <br>Http Status codes..
         <ul>
@@ -229,7 +283,7 @@ src, dest, name, doj and pnr. <strong>Facilities will not be used as a query par
 <hr>
 <li>
     DO NOT USE any library than the ones which are recommended. We are not keeping track of libraries that you are using.
-    So, in case of any such usage, your tests will not be executed on the server machines. 
+    So, in case of any such usage, your tests will not be executed on the server machines.
 </li>
 </body>
 </html>
