@@ -1,0 +1,716 @@
+<p dir="ltr"><strong>1)LeaderBoard Generator .</strong>
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr"><strong>Input :</strong>
+</p>
+<p dir="ltr">You will be writing a node script which will generate a leaderboard file from the data files . All the input and output files are csv files . Lines are seperated by \n .
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">There are 3 types of data files :
+<br />
+Users.csv file which contains all users data
+<br />
+lesson1.csv file which contains scores students got in lesson1
+<br />
+lesson2.csv file which contains scores students got in lesson 2
+<br />
+There will be only 2 lessons.
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">Users.csv file line format :
+</p>
+<p dir="ltr">id,name,githubId,college,gender
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">Sample users.csv file line :
+</p>
+<p dir="ltr">1,abhi,abhijith,stmartins,male
+</p>
+<p dir="ltr">Lesson Scores line format
+<br />
+githubId,score.
+</p>
+<p dir="ltr">Ex :
+</p>
+<p dir="ltr">If lesson1.csv has
+<br />
+abhijith,99
+</p>
+<p dir="ltr">It means that a student with githubID as abhijith has got 99 in lesson1 .
+</p>
+<p dir="ltr"><strong>Output :</strong>
+</p>
+<p dir="ltr">You will passed a path to the folder where all input files will be .In the same folder you need to generate output files too .
+</p>
+<p dir="ltr">Output File 1 name : leaderboardsimple.csv
+</p>
+<p dir="ltr">For the above file you will be clubbing data from users file and scores from only lesson1 file .Total marks will be same as lesson1 marks.
+</p>
+<p dir="ltr">Small leaderboard line format :
+</p>
+<p dir="ltr">name,college,gender,lesson1marks,totalmarks
+</p>
+<p dir="ltr">First line in the small leaderboard should be (header line)
+</p>
+<p dir="ltr">name,college,gender,lesson1,total
+</p>
+<p dir="ltr">Following lines should be the students data
+</p>
+<p dir="ltr">Output File 2 name : leaderboardlarge.csv
+</p>
+<p dir="ltr">For the above file you will be clubbing data from users file and scores from both &nbsp;lesson1 and lesson2 file .Total marks will be sum of lesson1 score and lesson2 score.
+</p>
+<p dir="ltr">Large leaderboard line format:
+</p>
+<p dir="ltr">Name,college,gender,test1marks,test2marks,totalmarks
+</p>
+<p dir="ltr">First line in the large leaderboard should be &nbsp;(headerline)
+</p>
+<p dir="ltr">name,college,gender,lesson1,lesson2,total
+</p>
+<p dir="ltr">Following lines should be the students data
+</p>
+<p dir="ltr"><strong>Note : Look into the testcase1 ,testcase 2 folders for sample input files /test files and ExpectedLeaderboardSmall and ExpectedLeaderBoardLarge files and UNDERSTAND HOW YOU NEED TO FORM AND WRITE THE DATA . </strong>
+</p>
+<p dir="ltr"><strong>Methods :</strong>
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">To the 2 functions you will be passed a path to a folder which will have the 3 files , &nbsp;users,lesson1 and lesson2 .You need to generate the two leaderboard files ,leaderboardsmall.csv and leaderboardlarge.csv in the same directory
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">generateLeaderBoardSmall(folderPath,callback) : &nbsp;Generates small leaderboard file and calls callback
+</p>
+<p dir="ltr">generateLeaderBoardLarge(folderPath,callback) : &nbsp;Generates large ledaerboard file and calls callback
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr"><strong>Sample Input Files</strong>
+</p>
+<p dir="ltr">users.csv
+</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+<tbody>
+<tr>
+<td>
+<p dir="ltr">1,abhijith,github100,stmartins,male
+</p>
+<p dir="ltr">2,nikhil,github101,cvr,male
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;
+</p>
+<p dir="ltr">lesson1.csv
+</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+<tbody>
+<tr>
+<td>
+<p dir="ltr">github100,90
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<br />
+lesson2.csv
+</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+<tbody>
+<tr>
+<td>
+<p dir="ltr">github100,1
+<br />
+github101,99
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;
+</p>
+<p dir="ltr"><strong>Sample Output Files</strong>
+</p>
+<p dir="ltr">
+<br />
+leaderboardsmall.csv
+</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+<tbody>
+<tr>
+<td>
+<p dir="ltr">name,college,gender,lesson1,total
+</p>
+<p dir="ltr">abhijith,stmartins,male,90,90
+</p>
+<p dir="ltr">nikhil,cvr,male,0,0
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;
+</p>
+<p dir="ltr">leaderboardlarge.csv
+</p>
+<p>&nbsp;
+</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+<tbody>
+<tr>
+<td>
+<p dir="ltr">name,college,gender,lesson1,lesson2,total
+</p>
+<p dir="ltr">abhijith,stmartins,male,90,1,91
+</p>
+<p dir="ltr">nikhil,cvr,male,0,99,99
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p dir="ltr"><strong>2)RestaurantFinder</strong>
+</p>
+<p><strong>Problem :</strong>
+<br />
+You will be writing a Express Server which will help in finding,adding,deleting restaurants etc.
+<br />
+&nbsp;
+</p>
+<p dir="ltr"><strong>Restaurant Model</strong> : (id,name,phone,budget,cuisine,colony,city) .
+<br />
+<br />
+<strong>Constraints :</strong>
+<br />
+<br />
+<br />
+Name should be a string less than 30 chars , which consists of only letters,digits and spaces.
+<br />
+Cities can be hyderabad,vizag or bhimavaram only or any of its capital letter forms. [HyDeRaBAD is also valid ].
+<br />
+Colonies can be anything , but less than 30 characters .
+<br />
+Phone number must be of 10 characters ,which consists of only numbers
+</p>
+<p dir="ltr">Budget must be a positive integer greater than 50 .
+<br />
+Cuisine can be anything , but less than 30 characters .(Should contain only letters ,No spaces or digits)
+</p>
+<p dir="ltr">If the request doesn&#39;t match any of the above constraints , return 400 as statusCode.
+<br />
+In the whole project ,every value (Except Name) can be of either lowercase or upper case and both are same.like northindian is same as NorthIndian. so you can store everything in lowercase in DB .
+<br />
+For names , Chutneys is different than chutNeys.
+<br />
+<br />
+<strong>List of all possible calls .</strong>
+<br />
+<br />
+<strong>POST :</strong>
+<br />
+<strong>Sample Request :</strong>
+<br />
+POST on /restaurants/
+</p>
+<p dir="ltr">{
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Paradise&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;9520123239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:300,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;northindian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;colony&rdquo;:&rdquo;kphb&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;hyderabad&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+<br />
+Sample response : &nbsp;Id of the restaurant created (status Code : 201 )
+<br />
+<br />
+{ &ldquo;id&rdquo;:1}
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">Sample Request 2:
+<br />
+&nbsp;
+</p>
+<p dir="ltr">{
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Cozinha De Goa&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;7720442239&rdquo;,
+<br />
+&ldquo;budget:600,
+<br />
+&ldquo;cuisine&rdquo;:&rdquo;seafood&rdquo;,
+<br />
+&ldquo;Colony&rdquo;:&rdquo;mvpcolony&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;vizag&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+<br />
+Sample response : &nbsp;Id of the restaurant created
+<br />
+<br />
+{ &ldquo;id&rdquo;:2}
+</p>
+<p dir="ltr">Sample Request 3:
+</p>
+<p dir="ltr">{
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Spice Magic&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;8906442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:400,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;indian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;colony&rdquo;:&rdquo;undi road&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;bhimavaram&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+<br />
+Sample response : &nbsp;Id of the restaurant created
+<br />
+<br />
+{ &ldquo;id&rdquo;:3}
+<br />
+<br />
+<span style="font-size:14px"><strong>GET : &nbsp;(success status Code : 200 )</strong></span>
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">Sample Request :
+<br />
+/restaurants/ : (Gets all restarant data)
+<br />
+<br />
+Sample Response
+<br />
+[{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:1
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Paradise&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;9520123239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:300,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;northindian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;colony&rdquo;:&rdquo;kphb&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;hyderabad&rdquo;
+</p>
+<p dir="ltr">},{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:2
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Cozinha De Goa&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;7720442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;seafood&rdquo;,
+</p>
+<p dir="ltr">&ldquo;colony&rdquo;:&rdquo;mvpcolony&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;vizag&rdquo;
+</p>
+<p dir="ltr">}]
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">Sample Request : (/restaurants/:id)
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">/restaurants/1 : (Gets restarant data for particular id)
+<br />
+<br />
+Sample Response
+<br />
+{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:1
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Paradise&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;9520123239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:300,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;northindian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;colony&rdquo;:&rdquo;kphb&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;hyderabad&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+&nbsp;
+</p>
+<p dir="ltr">
+<br />
+Note : If the id dosent exist , return statusCode as 404 .
+<br />
+<br />
+Sample Request (/restaurant?city=cityname)
+<br />
+<br />
+/restaurants?city=vizag : (Gets restaurant&#39;s data in the specified city . Should return an array,as we can have more than 1 restaurent in a city).
+<br />
+<br />
+Sample Response :
+<br />
+<br />
+[{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:2
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Cozinha De Goa&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;7720442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;seafood&rdquo;,
+</p>
+<p dir="ltr">&ldquo;colony&rdquo;:&rdquo;mvpcolony&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;vizag&rdquo;
+</p>
+<p dir="ltr">}]
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">Sample Request : (/restaurant?city=cityname&amp;colony=colonyname)
+<br />
+<br />
+/restaurants?city=vizag&amp;colony=mvpcolony
+<br />
+<br />
+Sample Response : (Gets array of restaurants in that colony in the specified city name )
+<br />
+&nbsp;
+</p>
+<p dir="ltr">[{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:2
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Cozinha De Goa&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;7720442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;seafood&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;mvpcolony&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;vizag&rdquo;
+</p>
+<p dir="ltr">}]
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">Note : Colony name without city name should send 400 as status code . (Error)
+</p>
+<p dir="ltr">Sample Request :(/restaurant?budget=maxbudget) (Returns all restaurants whose budget is less than the specified budget )
+<br />
+<br />
+/restaurants?budget=450
+<br />
+<br />
+<br />
+Sample Response :
+</p>
+<p dir="ltr">[{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:1
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Paradise&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;9520123239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:300,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;northindian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;colony&rdquo;:&rdquo;kphb&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;hyderabad&rdquo;
+</p>
+<p dir="ltr">},{
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Spice Magic&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;8906442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:400,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;indian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;undiroad&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;bhimavaram&rdquo;
+</p>
+<p dir="ltr">}]
+</p>
+<p>
+<br />
+&nbsp;
+</p>
+<p dir="ltr">Sample Request : (/restaurant?cuisine=cuisinename)
+<br />
+<br />
+/restaurants?cuisine=seafood
+<br />
+<br />
+Sample Response : (Gets array of restaurants with specified cuisine name )
+<br />
+&nbsp;
+</p>
+<p dir="ltr">[{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:2
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Cozinha De Goa&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;7720442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;seafood&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;mvpcolony&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;vizag&rdquo;
+</p>
+<p dir="ltr">}]
+</p>
+<p>
+<br />
+<br />
+&nbsp;
+</p>
+<p dir="ltr">Sample Request : (/restaurant?city=cityname&amp;colonycuisine=cuisinename)
+<br />
+<br />
+/restaurants?city=vizag&amp;cuisine=seafood
+<br />
+<br />
+Sample Response : (Gets array of restaurants with specified cuisine name in specified city )
+<br />
+&nbsp;
+</p>
+<p dir="ltr">[{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:2
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Cozinha De Goa&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;7720442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;seafood&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;mvpcolony&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;vizag&rdquo;
+</p>
+<p dir="ltr">}]
+</p>
+<p dir="ltr">
+<br />
+Note : Colony can also be added to above request for extra filtering.
+<br />
+&nbsp;
+</p>
+<p>&nbsp;
+</p>
+<p dir="ltr">
+<br />
+<span style="font-size:18px"><strong>PUT : &nbsp;(status Code : 200)</strong></span>
+<br />
+Updates the restarent data .
+<br />
+<br />
+Constraints :
+<br />
+<br />
+Name and id cannot be updated , &nbsp;any other field can be updated.
+<br />
+City cant be changed from exisiting 3 cities to other cities which arent supported ie from hyderabad to delhi .
+<br />
+<br />
+The same constraints specified for post applies here too .
+<br />
+<br />
+<br />
+Sample Request :
+<br />
+<br />
+Put : /restaurants/:id
+<br />
+Sample : /restaurants/2
+<br />
+Body :
+<br />
+<br />
+{
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;oceanfood&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;beachroad&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+<br />
+Sample Response :
+<br />
+<br />
+{
+</p>
+<p dir="ltr">&ldquo;id&rdquo;:2
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Cozinha De Goa&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;7720442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;oceanfood&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;beachroad&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;vizag&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+&nbsp;
+</p>
+<p dir="ltr">Put : /restaurants/:id
+<br />
+Sample : /restaurants/3
+<br />
+Body :
+<br />
+<br />
+{
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;vegetarian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;nizampet&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;hyderabad&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+<br />
+Sample Response :
+<br />
+<br />
+{
+</p>
+<p dir="ltr">&ldquo;name&rdquo;:&rdquo;Spice Magic&rdquo;,
+<br />
+&ldquo;phone&rdquo;:&rdquo;8906442239&rdquo;,
+</p>
+<p dir="ltr">&ldquo;budget:600,
+</p>
+<p dir="ltr">&ldquo;cuisine&rdquo;:&rdquo;vegetarian&rdquo;,
+</p>
+<p dir="ltr">&ldquo;Colony&rdquo;:&rdquo;nizampet&rdquo;,
+<br />
+&ldquo;city&rdquo;:&rdquo;hyderabad&rdquo;
+</p>
+<p dir="ltr">}
+<br />
+<br />
+Note : If a put body has any other params than the 6 specified in the model , you should send a 400 statuscode as error.
+<br />
+<br />
+<br />
+<span style="font-size:18px"><strong>DELETE </strong></span>
+<br />
+&nbsp;
+</p>
+<p dir="ltr">Status code : If deleted or not &nbsp;(status Code : 204 )
+</p>
+<p>
+<br />
+Sample Request :
+<br />
+<br />
+Delete : /restaurant/:id (Deletes restaurant by id )
+<br />
+<br />
+Sample Response
+<br />
+<br />
+Status code : 204 (If exists)
+<br />
+<br />
+Delete : /restaurant/:id (Deletes restaurant by id )
+<br />
+<br />
+Sample Response
+<br />
+<br />
+Status code : 404 (if not exists)
+<br />
+<br />
+<br />
+Delete : /restaurant?city=cityname (Deletes all restaurant present in the city )
+<br />
+/restaurant?city=vizag
+<br />
+<br />
+Sample Response
+<br />
+Status code : 204
+<br />
+<br />
+<br />
+Delete : /restaurant?city=cityname&amp;colony=colonyname (Deletes all restaurant present in the city and the colony)
+<br />
+/restaurant?city=vizag&amp;colony=colonyname
+<br />
+<br />
+Sample Response
+<br />
+Status code : 204
+<br />
+<br />
+<br />
+Note : You need to perform the same validations you did for get request .
+<br />
+Note : Even if no restaurants exists in that city or colony , return status code as 204.
+</p>
+<p>The new <a href="https://4html.net/Advanced-HTML-Editor-869.html?v=4" target="_blank" rel="nofollow"> HTML editor </a> allows you to organize your HTML code.</p>
