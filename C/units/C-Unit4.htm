@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+  <script src="./../../assets/js/codemirror.js"></script>
+  <link rel="stylesheet" href="./../../assets/css/codemirror.css">
+  <script src="./../../assets/js/clike.js"></script>
+
+  <script src="./../../assets/js/matchbrackets.js"></script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+
+  <div> <h2> C-Unit4</h2></div>
+  <p><b>Each Project will have Reference Links which you can read to get a quick grasp on the topic and some Practice Questions,If you want more practice for each Topic .</b>
+  </p>
+  <p>Each Practice Question is slightly abstracted ,You need to make certain assumptions and write the best solution .Think for the best complexity algorithms .Remember also Space vs Time Tradeoff </p>
+  <p>Do not copy the Answers from Internet ,or from your friends as that will lead to your disqualification ,We will run copychecker tools ,and do a manual review too.So even changing variable names or changing for loops to while loops still leads to detection.</p>
+  <p>You are in the course for learning ,So Do learn and dont resort to any malpractices</p>
+
+  <h4>Reference Links : (Right Click is disabled ,So Ctrl+C and Ctrl+V the links)</h4>
+  <ul>
+    <li>https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P</li>
+    <li>http://www.thelearningpoint.net/computer-science/data-structures-singly-linked-list-with-c-program-source-code</li>
+    <li>http://www.tutorialspoint.com/data_structures_algorithms/linked_lists_algorithm.htm</li>
+  </ul>
+
+  <h4>Practice Questions : </h4>
+  <ul>
+    
+    <li>Find the Length of the SLL.</li>
+    <li>Write functions for Insert and Delete nodes at a specific Index .</li>
+    <li>Delete every other node in an SLL.</li>
+    <li>Write a insert function ,which Inserts the nodes in a sorted way ,ie If 2 is inserted into a SLL already having 1->10 .Now after insert SLL becomes 1->2->10</li>
+    <li>Given an Sll , Swap every two nodes using pointers ,Ex:abcd -> badc .</li>
+    <li>Given a SLL ,Remove every Sll node which has greater valuen to its imediate right ?Ex :I/P:5->7->3->6->2->5 ,O/P: 7->6->5 ,A sorted SLL finally should have only 1 element .</li>
+    <li>Given an SLL which is a representation of a number ,Ex:: 1->2->1->NULL .Find out whether the number formed from SLL,is divisible by 11 or not .Dont convert it into an integer</li>
+  </ul>
+
+<h5>Sample Insert_node_at_end function</h5>
+<textarea id='problem1' name='problem1' rows='10' cols='80'>
+
+int insert_at_end(struct node **head,int data){
+  //Inserts a new node of data , and returns Length ,-1 if any error occurs .
+
+    struct node *new_node = (struct node*)malloc(sizeof(struct node));
+
+    if(new_node == NULL)
+    {
+        return -1;
+    }
+
+    new_node->data=new_data;
+    new_node->next=NULL;
+
+    //First Node insertion
+    if(*head == NULL)
+    {
+        *head=new_node;
+        return 1;
+    }
+    else
+    {
+
+        struct node *cur = *head;
+        int len=1;
+        while (cur->next != NULL)
+        {
+            cur=cur->next;
+            len++;
+        };
+        cur->next=new_node;
+        len++;
+        return len;
+    }
+}
+</textarea>
+
+<script type="text/javascript">
+
+  var cEditor = CodeMirror.fromTextArea(document.getElementById("problem1"), {
+    matchBrackets: true,
+    readOnly: "nocursor",
+    startStyle:"user-select: none",
+    mode: "text/x-csrc",
+    dragDrop:false
+  });
+  
+</script>
+</body>
+</html>
